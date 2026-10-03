@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration | Practical 5</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-icon">✦</div>
+                <div>
+                    <h2>Student Hub</h2>
+                    <p>Student Registration Portal</p>
+                </div>
+            </div>
+
+            <div class="secure">
+                🔒 Secure Registration
+            </div>
+        </header>
+
+
+        <main class="registration-card">
+
+            <div class="intro">
+                <span class="tag">NEW STUDENT</span>
+                <h1>Create Your Account</h1>
+                <p>
+                    Enter your details below to create your Student Hub account.
+                </p>
+            </div>
+
+
+            <form id="registrationForm" novalidate>
+
+                <!-- Personal Information -->
+
+                <section class="form-section">
+
+                    <div class="section-heading">
+                        <span>01</span>
+                        <div>
+                            <h2>Personal Information</h2>
+                            <p>Enter your basic student details</p>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                        >
+
+                        <small id="nameError"></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="example@gmail.com"
+                            autocomplete="email"
+                        >
+
+                        <small id="emailError"></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="mobile">
+                            Mobile Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            placeholder="Enter 10-digit mobile number"
+                            maxlength="10"
+                            autocomplete="tel"
+                        >
+
+                        <small id="mobileError"></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="course">
+                            Course
+                        </label>
+
+                        <select id="course" name="course">
+
+                            <option value="">
+                                Select your course
+                            </option>
+
+                            <option value="B.Tech">
+                                B.Tech
+                            </option>
+
+                            <option value="BCA">
+                                BCA
+                            </option>
+
+                            <option value="MCA">
+                                MCA
+                            </option>
+
+                            <option value="M.Tech">
+                                M.Tech
+                            </option>
+
+                        </select>
+
+                        <small id="courseError"></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="year">
+                            Academic Year
+                        </label>
+
+                        <select id="year" name="year">
+
+                            <option value="">
+                                Select academic year
+                            </option>
+
+                            <option value="First Year">
+                                First Year
+                            </option>
+
+                            <option value="Second Year">
+                                Second Year
+                            </option>
+
+                            <option value="Third Year">
+                                Third Year
+                            </option>
+
+                            <option value="Fourth Year">
+                                Fourth Year
+                            </option>
+
+                        </select>
+
+                        <small id="yearError"></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Gender
+                        </label>
+
+                        <div class="gender-options">
+
+                            <label class="radio-option">
+                                <input
+                                    type="radio"
+                                    name="gender"
+                                    value="Male"
+                                >
+                                <span>Male</span>
+                            </label>
+
+                            <label class="radio-option">
+                                <input
+                                    type="radio"
+                                    name="gender"
+                                    value="Female"
+                                >
+                                <span>Female</span>
+                            </label>
+
+                            <label class="radio-option">
+                                <input
+                                    type="radio"
+                                    name="gender"
+                                    value="Other"
+                                >
+                                <span>Other</span>
+                            </label>
+
+                        </div>
+
+                        <small id="genderError"></small>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Security Information -->
+
+                <section class="form-section">
+
+                    <div class="section-heading">
+                        <span>02</span>
+                        <div>
+                            <h2>Security Information</h2>
+                            <p>Create a strong password for your account</p>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Create a strong password"
+                            autocomplete="new-password"
+                        >
+
+                        <div class="strength-container">
+
+                            <div class="strength-track">
+                                <div id="strengthBar"></div>
+                            </div>
+
+                            <span id="strengthText">
+                                Password Strength: Not entered
+                            </span>
+
+                        </div>
+
+                        <small id="passwordError"></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Re-enter your password"
+                            autocomplete="new-password"
+                        >
+
+                        <small id="confirmPasswordError"></small>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Terms -->
+
+                <div class="terms-box">
+
+                    <label class="terms-label">
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            name="terms"
+                        >
+
+                        <span>
+                            I agree to the Terms and Conditions.
+                        </span>
+
+                    </label>
+
+                    <small id="termsError"></small>
+
+                </div>
+
+
+                <!-- Buttons -->
+
+                <div class="button-group">
+
+                    <button
+                        type="submit"
+                        class="register-btn"
+                    >
+                        Register
+                    </button>
+
+                    <button
+                        type="reset"
+                        class="restart-btn"
+                        id="restartBtn"
+                    >
+                        Restart
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="successMessage"
+                    class="success-message"
+                    aria-live="polite"
+                ></div>
+
+            </form>
+
+        </main>
+
+
+        <footer>
+            Student Portal Hub • Practical 5 • JavaScript Form Validation
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

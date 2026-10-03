@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Portal Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="practical4.css">
+</head>
+
+<body>
+
+    <!-- Notification Banner -->
+    <div id="notificationBanner" class="notification-banner">
+        <span>📢 New Notice: Check your latest assignments and academic updates.</span>
+        <button id="closeNotification" aria-label="Close notification">×</button>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+
+        <div class="logo">
+            🎓 Student Portal Hub
+        </div>
+
+        <button
+            id="menuToggle"
+            class="menu-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false">
+            ☰
+        </button>
+
+        <nav id="mainNav">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="assignment.html">Assignments</a>
+            <a href="attandance.html">Attendance</a>
+            <a href="faculty.html">Faculty</a>
+            <a href="notic.html">Notice</a>
+            <a href="admin.html">Profile</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            🌙
+        </button>
+
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+
+        <div class="hero-content">
+
+            <span class="hero-tag">CHARUSAT UNIVERSITY</span>
+
+            <h1>Welcome to Student Portal Hub</h1>
+
+            <p>
+                Your complete academic companion for accessing courses,
+                assignments, attendance, faculty information, notices and
+                other important student resources.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button id="openModal" class="primary-btn">
+                    📋 Portal Information
+                </button>
+
+                <a href="courses.html" class="secondary-btn">
+                    View Courses
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-image">
+            <img src="assets/charusat.jpeg" alt="CHARUSAT University">
+        </div>
+
+    </section>
+
+
+    <!-- Quick Access -->
+    <section class="quick-section">
+
+        <h2>Quick Access</h2>
+
+        <div class="quick-grid">
+
+            <a href="courses.html" class="quick-card">
+                <div class="quick-icon">📚</div>
+                <h3>Courses</h3>
+                <p>View your current courses and subjects.</p>
+            </a>
+
+            <a href="assignment.html" class="quick-card">
+                <div class="quick-icon">📝</div>
+                <h3>Assignments</h3>
+                <p>Check assignments and submission details.</p>
+            </a>
+
+            <a href="attandance.html" class="quick-card">
+                <div class="quick-icon">📊</div>
+                <h3>Attendance</h3>
+                <p>Monitor your academic attendance.</p>
+            </a>
+
+            <a href="faculty.html" class="quick-card">
+                <div class="quick-icon">👨‍🏫</div>
+                <h3>Faculty</h3>
+                <p>Find faculty information and details.</p>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Content Slider -->
+    <section class="slider-section">
+
+        <h2>Student Portal Highlights</h2>
+
+        <div class="slider">
+
+            <button
+                id="previousSlide"
+                class="slider-btn"
+                aria-label="Previous slide">
+                ❮
+            </button>
+
+            <div class="slide-content">
+
+                <div id="slideIcon" class="slide-icon">
+                    📚
+                </div>
+
+                <h3 id="slideTitle">
+                    Academic Resources
+                </h3>
+
+                <p id="slideDescription">
+                    Access courses, assignments and important academic
+                    information from one place.
+                </p>
+
+                <div class="slide-counter">
+                    <span id="slideNumber">1</span> / 4
+                </div>
+
+            </div>
+
+            <button
+                id="nextSlide"
+                class="slider-btn"
+                aria-label="Next slide">
+                ❯
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="faq-section">
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-container">
+
+            <div class="faq-item">
+
+                <button
+                    class="faq-question"
+                    aria-expanded="false">
+                    What is Student Portal Hub?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Student Portal Hub is a centralized platform that
+                        provides students with easy access to academic
+                        information and resources.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button
+                    class="faq-question"
+                    aria-expanded="false">
+                    Where can I check assignments?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        You can check your assignments by opening the
+                        Assignments section from the navigation menu.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button
+                    class="faq-question"
+                    aria-expanded="false">
+                    How can I check my attendance?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Open the Attendance section to view your attendance
+                        information.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button
+                    class="faq-question"
+                    aria-expanded="false">
+                    How can I contact faculty?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Faculty details are available in the Faculty section
+                        of Student Portal Hub.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Modal -->
+    <div id="portalModal" class="modal" aria-hidden="true">
+
+        <div class="modal-content">
+
+            <button
+                id="closeModal"
+                class="modal-close"
+                aria-label="Close modal">
+                ×
+            </button>
+
+            <div class="modal-icon">🎓</div>
+
+            <h2>Student Portal Hub</h2>
+
+            <p>
+                Student Portal Hub provides students with quick access to
+                academic resources including courses, assignments,
+                attendance, faculty and notices.
+            </p>
+
+            <button id="modalOkay" class="primary-btn">
+                Got it
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>🎓 Student Portal Hub</h3>
+
+        <p>
+            Your Complete Academic Companion
+        </p>
+
+        <p>
+            © 2026 Student Portal Hub
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

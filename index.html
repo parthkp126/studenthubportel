@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Home - Student Portal Hub</title>
+
+    <!-- COMMON CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <!-- =========================================
+         HOME PAGE CSS
+    ========================================== -->
+
+    <style>
+
+        .welcome-section {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 50px auto;
+
+            padding: 50px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 50px;
+        }
+
+
+        .welcome-content {
+            flex: 1;
+        }
+
+
+        .small-title {
+            color: #ffb703;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .welcome-content h2 {
+            color: #123c69;
+
+            font-size: 42px;
+
+            line-height: 1.2;
+
+            margin-bottom: 20px;
+        }
+
+
+        .welcome-description {
+            color: #555;
+
+            line-height: 1.7;
+
+            font-size: 17px;
+        }
+
+
+        .college-image {
+            flex: 1;
+
+            text-align: center;
+        }
+
+
+        .college-image img {
+            width: 100%;
+
+            max-width: 500px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+
+        /* FAQ */
+
+        .faq {
+            margin: 25px 0;
+        }
+
+
+        .faq-item {
+            border: 1px solid #ddd;
+
+            border-radius: 8px;
+
+            overflow: hidden;
+        }
+
+
+        .question {
+            width: 100%;
+
+            border: none;
+
+            background: #123c69;
+
+            color: white;
+
+            padding: 14px;
+
+            text-align: left;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+
+        .answer {
+            padding: 15px;
+
+            background: #f4f7fb;
+
+            color: #555;
+        }
+
+
+        @media (max-width: 800px) {
+
+            .welcome-section {
+                flex-direction: column;
+
+                padding: 30px;
+            }
+
+            .welcome-content h2 {
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         COMMON HEADER
+    ========================================== -->
+
+    <header>
+
+        <h1>
+            Student Portal Hub
+        </h1>
+
+        <nav>
+
+            <a href="index.html" class="active">
+                Home
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+            <a href="assignment.html">
+                Assignments
+            </a>
+
+            <a href="attandance.html">
+                Attendance
+            </a>
+
+            <a href="faculty.html">
+                Faculty
+            </a>
+
+            <a href="notic.html">
+                Notice
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         HOME CONTENT
+    ========================================== -->
+
+    <main>
+
+        <section class="welcome-section">
+
+            <div class="welcome-content">
+
+                <div class="small-title">
+                    CHARUSAT UNIVERSITY
+                </div>
+
+                <h2>
+                    Welcome to<br>
+                    Student Portal Hub
+                </h2>
+
+                <div class="faq">
+
+                    <div class="faq-item">
+
+                      
+
+                    </div>
+
+                </div>
+
+                <p class="welcome-description">
+
+                    Access your courses, assignments,
+                    attendance, faculty information,
+                    notices and student profile from
+                    one simple portal.
+
+                </p>
+
+            </div>
+
+
+            <div class="college-image">
+
+                <img
+                    src="assets/charusat.jpeg"
+                    alt="CHARUSAT University"
+                >
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         COMMON FOOTER
+    ========================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Student Portal Hub
+        </p>
+
+    </footer>
+
+
+</body>
+</html>

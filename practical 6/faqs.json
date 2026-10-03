@@ -1,0 +1,94 @@
+
+[
+    {
+        "id": 1,
+        "question": "How can I check my attendance?",
+        "answer": "Open the Attendance section in the Student Portal Hub to view your attendance details.",
+        "category": "Attendance"
+    },
+    {
+        "id": 2,
+        "question": "Where can I find my assignments?",
+        "answer": "All available assignments are displayed in the Assignments section.",
+        "category": "Assignments"
+    },
+    {
+        "id": 3,
+        "question": "How can I view my courses?",
+        "answer": "Go to the Courses section to view your enrolled courses and course information.",
+        "category": "Courses"
+    },
+    {
+        "id": 4,
+        "question": "Where can I check college notices?",
+        "answer": "You can view the latest college notices in the Notice section.",
+        "category": "Notice"
+    },
+    {
+        "id": 5,
+        "question": "How can I contact faculty?",
+        "answer": "Open the Faculty section to find faculty information and contact details.",
+        "category": "Faculty"
+    },
+    {
+        "id": 6,
+        "question": "How can I update my profile?",
+        "answer": "Open your profile section and update the available profile information.",
+        "category": "Profile"
+    },
+    {
+        "id": 7,
+        "question": "Can I access the portal from mobile?",
+        "answer": "Yes, the Student Portal Hub is designed to work on mobile, tablet, and desktop screens.",
+        "category": "General"
+    },
+    {
+        "id": 8,
+        "question": "How do I search for an event?",
+        "answer": "Open the Events section and enter the event name in the search box.",
+        "category": "Events"
+    },
+    {
+        "id": 9,
+        "question": "How can I filter student records?",
+        "answer": "Select a course from the filter dropdown to display students from that course.",
+        "category": "Students"
+    },
+    {
+        "id": 10,
+        "question": "Can student records be sorted?",
+        "answer": "Yes, use the sorting option to arrange student records from A-Z or Z-A.",
+        "category": "Students"
+    },
+    {
+        "id": 11,
+        "question": "What is the purpose of the Events section?",
+        "answer": "The Events section displays upcoming college workshops, competitions, seminars, and activities.",
+        "category": "Events"
+    },
+    {
+        "id": 12,
+        "question": "How can I find a specific FAQ?",
+        "answer": "Use the search box to search for keywords from the question or answer.",
+        "category": "General"
+    },
+    {
+        "id": 13,
+        "question": "Does the portal display data dynamically?",
+        "answer": "Yes, the portal uses JavaScript Fetch API to load and display JSON data dynamically.",
+        "category": "Technology"
+    },
+    {
+        "id": 14,
+        "question": "What happens if JSON data cannot be loaded?",
+        "answer": "The portal displays an error message asking the user to check the JSON files and server.",
+        "category": "Technology"
+    },
+    {
+        "id": 15,
+        "question": "Does the portal support pagination?",
+        "answer": "Yes, records are displayed page by page using the Previous and Next buttons.",
+        "category": "Technology"
+    }
+]
+

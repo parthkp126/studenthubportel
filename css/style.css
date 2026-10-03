@@ -1,0 +1,138 @@
+/* =========================================
+   COMMON STYLE
+   Used by ALL pages
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f7fb;
+    color: #222;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   COMMON HEADER
+========================================= */
+
+header {
+    background-color: #123c69;
+    color: white;
+    padding: 18px 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+    font-size: 24px;
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   COMMON NAVIGATION
+========================================= */
+
+header nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+
+    padding: 10px 12px;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+header nav a:hover {
+    background-color: #1e6091;
+}
+
+header nav a.active {
+    background-color: #1e6091;
+}
+
+
+/* =========================================
+   COMMON LOGIN BUTTON
+========================================= */
+
+.login-btn {
+    background-color: #ffb703 !important;
+    color: #111 !important;
+    font-weight: bold;
+}
+
+.login-btn:hover {
+    background-color: #ffd166 !important;
+}
+
+
+/* =========================================
+   COMMON FOOTER
+========================================= */
+
+footer {
+    background-color: #123c69;
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+    color: white;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   COMMON RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1000px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    header nav {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    header nav a {
+        font-size: 12px;
+        padding: 7px;
+    }
+}
