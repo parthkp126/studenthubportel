@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Portal Hub - Data Explorer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Student Portal Hub</h1>
+            <p>Student Data Explorer</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" data-type="events">Events</button>
+            <button class="tab" data-type="students">Students</button>
+            <button class="tab" data-type="faqs">FAQs</button>
+        </div>
+
+        <div class="controls">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search records..."
+            >
+
+            <select id="filter">
+                <option value="All">All Categories</option>
+            </select>
+
+            <select id="sort">
+                <option value="default">Default Order</option>
+                <option value="az">A - Z</option>
+                <option value="za">Z - A</option>
+            </select>
+
+        </div>
+
+        <div class="status">
+
+            <p id="loading">Loading data...</p>
+
+            <p id="error"></p>
+
+            <p id="recordCount"></p>
+
+        </div>
+
+        <div id="dataContainer"></div>
+
+        <div class="pagination">
+
+            <button id="prevBtn">Previous</button>
+
+            <span id="pageNumber">Page 1</span>
+
+            <button id="nextBtn">Next</button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+
