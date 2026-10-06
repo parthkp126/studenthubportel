@@ -1,0 +1,209 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Student Portal Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <button id="menuBtn" class="menu-btn" type="button">
+        ☰
+    </button>
+
+    <div class="brand">
+        🎓 Student Portal Hub
+    </div>
+
+    <div class="top-actions">
+
+        <a href="profile.html" class="top-link">
+            👤 Profile
+        </a>
+
+        <button id="themeBtn" class="icon-btn" type="button">
+            🌙
+        </button>
+
+        <button id="helpBtn" class="icon-btn" type="button">
+            ❓
+        </button>
+
+    </div>
+
+</header>
+
+<aside id="sidebar" class="sidebar">
+
+    <nav aria-label="Main navigation">
+
+        <a href="index.html">🏠 Dashboard</a>
+        <a href="courses.html">📚 Courses</a>
+        <a href="assignment.html">📝 Assignment</a>
+        <a href="attandance.html">📊 Attendance</a>
+        <a href="faculty.html">👨‍🏫 Faculty</a>
+        <a href="notic.html">📢 Notice</a>
+        <a href="events.html" class="active">🗓️ Events</a>
+        <a href="profile.html">👤 Profile</a>
+        <a href="registration.html">📝 Register</a>
+        <a href="faq.html">❓ FAQ</a>
+        <a href="contact.html">📞 Contact</a>
+        <a href="Admin.html">⚙️ Admin</a>
+
+    </nav>
+
+</aside>
+
+<main class="main-content">
+
+    <section class="page-header">
+
+        <div>
+
+            <p class="small-text">
+                Student Portal
+            </p>
+
+            <h1>
+                🗓️ College Events
+            </h1>
+
+            <p>
+                Search, filter and sort upcoming college events.
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="content-card event-controls">
+
+        <div class="search-box">
+
+            <label for="eventSearch">
+                🔎 Search Events
+            </label>
+
+            <input
+                type="search"
+                id="eventSearch"
+                placeholder="Search event..."
+                autocomplete="off">
+
+        </div>
+
+        <div class="filter-box">
+
+            <label for="eventFilter">
+                📂 Filter
+            </label>
+
+            <select id="eventFilter">
+
+                <option value="all">All Events</option>
+                <option value="Technology">Technology</option>
+                <option value="Competition">Competition</option>
+                <option value="Career">Career</option>
+                <option value="Sports">Sports</option>
+                <option value="Cultural">Cultural</option>
+                <option value="Workshop">Workshop</option>
+
+            </select>
+
+        </div>
+
+        <div class="sort-box">
+
+            <label for="eventSort">
+                ↕️ Sort
+            </label>
+
+            <select id="eventSort">
+
+                <option value="default">Default</option>
+                <option value="title-asc">Title A-Z</option>
+                <option value="title-desc">Title Z-A</option>
+                <option value="date-asc">Date: Oldest First</option>
+                <option value="date-desc">Date: Newest First</option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+    <section class="result-info">
+
+        <p id="eventResultInfo">
+            Loading events...
+        </p>
+
+    </section>
+
+    <section
+        id="eventsContainer"
+        class="cards-grid">
+
+    </section>
+
+    <div
+        id="eventError"
+        class="error-box"
+        role="alert"
+        hidden>
+    </div>
+
+    <nav
+        id="eventPagination"
+        class="pagination"
+        aria-label="Event pagination">
+    </nav>
+
+</main>
+
+<div id="helpModal" class="modal" hidden>
+
+    <div class="modal-content">
+
+        <button
+            id="closeModal"
+            class="modal-close"
+            type="button">
+            ×
+        </button>
+
+        <h2>
+            ❓ Student Portal Help
+        </h2>
+
+        <p>
+            Use Search to find events.
+        </p>
+
+        <p>
+            Use Filter and Sort to organize events.
+        </p>
+
+        <p>
+            Use Pagination to view more events.
+        </p>
+
+        <a href="faq.html" class="modal-link">
+            Open FAQ →
+        </a>
+
+    </div>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
+```

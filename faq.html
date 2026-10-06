@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FAQ - Student Portal Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Notification Banner -->
+    <div id="notificationBanner" class="notification-banner">
+        <span>📢 Welcome to Student Portal Hub!</span>
+
+        <button id="closeNotification"
+                class="notification-close"
+                type="button"
+                aria-label="Close notification">
+            ×
+        </button>
+    </div>
+
+
+    <!-- Top Bar -->
+    <header class="topbar">
+
+        <button id="menuBtn"
+                class="menu-btn"
+                type="button"
+                aria-label="Open navigation menu">
+            ☰
+        </button>
+
+        <div class="brand">
+            🎓 Student Portal Hub
+        </div>
+
+        <div class="top-actions">
+
+            <a href="profile.html" class="top-link">
+                👤 Profile
+            </a>
+
+            <button id="themeBtn"
+                    class="icon-btn"
+                    type="button"
+                    aria-label="Toggle light and dark theme">
+                🌙
+            </button>
+
+            <button id="helpBtn"
+                    class="icon-btn"
+                    type="button"
+                    aria-label="Open help">
+                ❓
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+
+        <nav aria-label="Main navigation">
+
+            <a href="index.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="courses.html">
+                📚 Courses
+            </a>
+
+            <a href="assignment.html">
+                📝 Assignment
+            </a>
+
+            <a href="attandance.html">
+                📊 Attendance
+            </a>
+
+            <a href="faculty.html">
+                👨‍🏫 Faculty
+            </a>
+
+            <a href="notic.html">
+                📢 Notice
+            </a>
+
+            <a href="events.html">
+                🗓️ Events
+            </a>
+
+            <a href="profile.html">
+                👤 Profile
+            </a>
+
+            <a href="registration.html">
+                📝 Register
+            </a>
+
+            <a href="faq.html" class="active">
+                ❓ FAQ
+            </a>
+
+            <a href="contact.html">
+                📞 Contact
+            </a>
+
+            <a href="Admin.html">
+                ⚙️ Admin
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <section class="page-header">
+
+            <div>
+                <h1>❓ Frequently Asked Questions</h1>
+
+                <p>
+                    Find answers to common questions about the Student Portal.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- Search -->
+        <section class="content-card">
+
+            <div class="search-box">
+
+                <label for="faqSearch">
+                    🔎 Search FAQ
+                </label>
+
+                <input
+                    type="search"
+                    id="faqSearch"
+                    placeholder="Search your question..."
+                    autocomplete="off"
+                    aria-describedby="faqResultInfo"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- Loading -->
+        <div id="faqLoading"
+             class="loading-box"
+             aria-live="polite">
+
+            ⏳ Loading FAQs...
+
+        </div>
+
+
+        <!-- Error -->
+        <div id="faqError"
+             class="error-box"
+             role="alert"
+             hidden>
+
+        </div>
+
+
+        <!-- Result Information -->
+        <div id="faqResultInfo"
+             class="result-info"
+             aria-live="polite">
+
+        </div>
+
+
+        <!-- FAQ Container -->
+        <section
+            id="faqContainer"
+            class="faq-container"
+            aria-label="Frequently asked questions">
+
+        </section>
+
+
+        <!-- Pagination -->
+        <nav
+            id="faqPagination"
+            class="pagination"
+            aria-label="FAQ pagination">
+
+        </nav>
+
+
+    </main>
+
+
+    <!-- Help Modal -->
+    <div id="helpModal"
+         class="modal"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="helpTitle"
+         hidden>
+
+        <div class="modal-content">
+
+            <button id="closeModal"
+                    class="modal-close"
+                    type="button"
+                    aria-label="Close help">
+                ×
+            </button>
+
+            <h2 id="helpTitle">
+                ❓ Help
+            </h2>
+
+            <p>
+                Use the search box to find frequently asked questions.
+            </p>
+
+            <p>
+                Click on a question to open or close its answer.
+            </p>
+
+            <p>
+                You can also use the Theme button to switch between
+                light and dark mode.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
+

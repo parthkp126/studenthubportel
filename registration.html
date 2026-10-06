@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration - Student Portal Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <button id="menuBtn" class="hamburger" type="button"
+        aria-label="Open navigation menu" aria-expanded="false">
+        ☰
+    </button>
+
+    <div class="brand">
+        🎓 Student Portal Hub
+    </div>
+
+    <div class="top-actions">
+        <a href="profile.html">👤 Profile</a>
+
+        <button id="themeBtn" type="button">
+            🌙 Theme
+        </button>
+
+        <button id="helpBtn" type="button">
+            ❓ Help
+        </button>
+    </div>
+
+</header>
+
+
+<div class="portal-layout">
+
+    <aside id="sidebar" class="sidebar" aria-label="Main navigation">
+
+        <h3>Menu</h3>
+
+        <a href="index.html">🏠 Dashboard</a>
+        <a href="courses.html">📚 Courses</a>
+        <a href="assignment.html">📝 Assignments</a>
+        <a href="attandance.html">📊 Attendance</a>
+        <a href="faculty.html">👨‍🏫 Faculty</a>
+        <a href="notic.html">📢 Notice</a>
+        <a href="events.html">🗓️ Events</a>
+        <a href="profile.html">👤 Profile</a>
+        <a href="registration.html" class="active">📝 Registration</a>
+        <a href="faq.html">❓ FAQ</a>
+        <a href="contact.html">📞 Contact</a>
+        <a href="Admin.html">⚙️ Admin</a>
+
+    </aside>
+
+
+    <main class="page-content">
+
+        <div class="page-header">
+
+            <p class="small-text">
+                Student Portal
+            </p>
+
+            <h1>
+                📝 Student Registration
+            </h1>
+
+            <p>
+                Fill in all required information to register.
+            </p>
+
+        </div>
+
+
+        <section class="form-card">
+
+            <form id="registrationForm"
+                action="process.php"
+                method="POST"
+                novalidate>
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        minlength="3"
+                        maxlength="50"
+                        autocomplete="name"
+                        required
+                        aria-describedby="nameError">
+
+                    <small
+                        id="nameError"
+                        class="field-error"
+                        role="alert">
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="enrollment">
+                        Enrollment Number
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="enrollment"
+                        name="enrollment"
+                        placeholder="Example: 25CS028"
+                        minlength="5"
+                        maxlength="15"
+                        pattern="[A-Za-z0-9]+"
+                        required
+                        aria-describedby="enrollmentError">
+
+                    <small
+                        id="enrollmentError"
+                        class="field-error"
+                        role="alert">
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="student@example.com"
+                        autocomplete="email"
+                        required
+                        aria-describedby="emailError">
+
+                    <small
+                        id="emailError"
+                        class="field-error"
+                        role="alert">
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="mobile">
+                        Mobile Number
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="mobile"
+                        name="mobile"
+                        placeholder="10 digit mobile number"
+                        inputmode="numeric"
+                        maxlength="10"
+                        pattern="[0-9]{10}"
+                        autocomplete="tel"
+                        required
+                        aria-describedby="mobileError">
+
+                    <small
+                        id="mobileError"
+                        class="field-error"
+                        role="alert">
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a strong password"
+                        minlength="8"
+                        maxlength="30"
+                        autocomplete="new-password"
+                        required
+                        aria-describedby="passwordError">
+
+                    <div class="password-strength">
+
+                        <div
+                            id="strengthBar"
+                            class="strength-bar">
+                        </div>
+
+                    </div>
+
+                    <small
+                        id="strengthText"
+                        class="strength-text">
+                        Password strength: Not entered
+                    </small>
+
+                    <small
+                        id="passwordError"
+                        class="field-error"
+                        role="alert">
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Re-enter your password"
+                        minlength="8"
+                        maxlength="30"
+                        autocomplete="new-password"
+                        required
+                        aria-describedby="confirmPasswordError">
+
+                    <small
+                        id="confirmPasswordError"
+                        class="field-error"
+                        role="alert">
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="course">
+                        Course
+                        <span class="required">*</span>
+                    </label>
+
+                    <select
+                        id="course"
+                        name="course"
+                        required
+                        aria-describedby="courseError">
+
+                        <option value="">
+                            Select Course
+                        </option>
+
+                        <option value="Computer Science">
+                            Computer Science
+                        </option>
+
+                        <option value="Information Technology">
+                            Information Technology
+                        </option>
+
+                        <option value="Computer Engineering">
+                            Computer Engineering
+                        </option>
+
+                    </select>
+
+                    <small
+                        id="courseError"
+                        class="field-error"
+                        role="alert">
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="year">
+                        Year
+                        <span class="required">*</span>
+                    </label>
+
+                    <select
+                        id="year"
+                        name="year"
+                        required
+                        aria-describedby="yearError">
+
+                        <option value="">
+                            Select Year
+                        </option>
+
+                        <option value="First Year">
+                            First Year
+                        </option>
+
+                        <option value="Second Year">
+                            Second Year
+                        </option>
+
+                        <option value="Third Year">
+                            Third Year
+                        </option>
+
+                        <option value="Fourth Year">
+                            Fourth Year
+                        </option>
+
+                    </select>
+
+                    <small
+                        id="yearError"
+                        class="field-error"
+                        role="alert">
+                    </small>
+
+                </div>
+
+
+                <fieldset class="gender-fieldset">
+
+                    <legend>
+                        Gender
+                        <span class="required">*</span>
+                    </legend>
+
+                    <div class="gender-options">
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Male"
+                                required>
+                            Male
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Female">
+                            Female
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Other">
+                            Other
+                        </label>
+
+                    </div>
+
+                    <small
+                        id="genderError"
+                        class="field-error"
+                        role="alert">
+                    </small>
+
+                </fieldset>
+
+
+                <div class="terms-group">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            name="terms"
+                            value="accepted"
+                            required>
+
+                        I agree to the
+
+                        <a href="#" id="termsLink">
+                            Terms & Conditions
+                        </a>
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <small
+                        id="termsError"
+                        class="field-error"
+                        role="alert">
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="registrationMessage"
+                    class="registration-message"
+                    role="alert"
+                    aria-live="polite">
+                </div>
+
+
+                <div class="form-buttons">
+
+                    <button
+                        type="submit"
+                        class="primary-btn">
+                        📝 Register
+                    </button>
+
+                    <button
+                        type="reset"
+                        id="resetRegistration"
+                        class="secondary-btn">
+                        Clear
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<div
+    id="helpModal"
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="helpTitle">
+
+    <div class="modal-content">
+
+        <button
+            id="closeModal"
+            class="modal-close"
+            type="button"
+            aria-label="Close help window">
+            ×
+        </button>
+
+        <h2 id="helpTitle">
+            ❓ Student Portal Help
+        </h2>
+
+        <p>
+            Complete every required field before submitting
+            the registration form.
+        </p>
+
+        <p>
+            Your registration information is validated and
+            stored in the browser.
+        </p>
+
+        <a
+            href="faq.html"
+            class="modal-link">
+            Open FAQ →
+        </a>
+
+    </div>
+
+</div>
+
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
+
