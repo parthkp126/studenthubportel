@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Portal Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Prevent Help Modal from appearing on page load */
+        #helpModal[hidden] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NOTIFICATION BANNER
+    ========================== -->
+
+    <div id="notificationBanner" class="notification-banner">
+
+        <span>
+            📢 Important: Please check the latest notices and upcoming events.
+        </span>
+
+        <button
+            id="closeNotification"
+            class="close-notification"
+            type="button"
+            aria-label="Close notification">
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         TOP BAR
+    ========================== -->
+
+    <header class="topbar">
+
+        <button
+            id="menuBtn"
+            class="hamburger"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false">
+            ☰
+        </button>
+
+        <div class="brand">
+            🎓 Student Portal Hub
+        </div>
+
+        <div class="top-actions">
+
+            <a href="profile.html">
+                👤 Profile
+            </a>
+
+            <button
+                id="themeBtn"
+                type="button">
+                🌙 Theme
+            </button>
+
+            <button
+                id="helpBtn"
+                type="button">
+                ❓ Help
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN LAYOUT
+    ========================== -->
+
+    <div class="portal-layout">
+
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside
+            id="sidebar"
+            class="sidebar"
+            aria-label="Main navigation">
+
+            <h3>Menu</h3>
+
+            <a href="index.html" class="active">
+                🏠 Dashboard
+            </a>
+
+            <a href="courses.html">
+                📚 Courses
+            </a>
+
+            <a href="assignment.html">
+                📝 Assignments
+            </a>
+
+            <a href="attendance.html">
+                📊 Attendance
+            </a>
+
+            <a href="faculty.html">
+                👨‍🏫 Faculty
+            </a>
+
+            <a href="notice.html">
+                📢 Notice
+            </a>
+
+            <a href="events.html">
+                🗓️ Events
+            </a>
+
+            <a href="profile.html">
+                👤 Profile
+            </a>
+
+            <a href="registration.html">
+                📝 Registration
+            </a>
+
+            <a href="faq.html">
+                ❓ FAQ
+            </a>
+
+            <a href="contact.html">
+                📞 Contact
+            </a>
+
+            <a href="admin.html">
+                ⚙️ Admin
+            </a>
+
+        </aside>
+
+
+        <!-- =========================
+             DASHBOARD
+        ========================== -->
+
+        <main class="dashboard">
+
+
+            <!-- =========================
+                 WELCOME
+            ========================== -->
+
+            <section class="welcome-card">
+
+                <div>
+
+                    <p class="small-text">
+                        Welcome back 👋
+                    </p>
+
+                    <h1>
+                        Hello,
+                        <span id="studentName">
+                            Student
+                        </span>
+                    </h1>
+
+                    <p>
+                        Enrollment No:
+                        <strong id="studentEnrollment">
+                            Not Registered
+                        </strong>
+                    </p>
+
+                </div>
+
+                <div
+                    class="welcome-icon"
+                    aria-hidden="true">
+                    🎓
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CONTENT SLIDER
+            ========================== -->
+
+            <section
+                class="slider"
+                aria-label="Student portal information slider">
+
+                <div
+                    class="slide active-slide"
+                    data-slide="0">
+
+                    <div class="slide-content">
+
+                        <span class="slide-icon">
+                            🎓
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                Welcome to Student Portal Hub
+                            </h2>
+
+                            <p>
+                                Manage your courses, assignments,
+                                attendance and college activities
+                                from one place.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="slide"
+                    data-slide="1">
+
+                    <div class="slide-content">
+
+                        <span class="slide-icon">
+                            📚
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                Manage Your Courses
+                            </h2>
+
+                            <p>
+                                Quickly access course and faculty
+                                information whenever you need it.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="slide"
+                    data-slide="2">
+
+                    <div class="slide-content">
+
+                        <span class="slide-icon">
+                            📝
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                Track Your Assignments
+                            </h2>
+
+                            <p>
+                                Keep track of pending and completed
+                                academic tasks.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="slider-controls">
+
+                    <button
+                        id="prevSlide"
+                        type="button"
+                        aria-label="Previous slide">
+                        ❮
+                    </button>
+
+                    <div
+                        id="sliderDots"
+                        class="slider-dots"
+                        aria-label="Slider navigation">
+                    </div>
+
+                    <button
+                        id="nextSlide"
+                        type="button"
+                        aria-label="Next slide">
+                        ❯
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 STATISTICS
+            ========================== -->
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📚
+                    </div>
+
+                    <div>
+                        <h2>12</h2>
+                        <p>Courses</p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📝
+                    </div>
+
+                    <div>
+                        <h2>35</h2>
+                        <p>Tasks</p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📊
+                    </div>
+
+                    <div>
+                        <h2>93%</h2>
+                        <p>Attendance</p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📢
+                    </div>
+
+                    <div>
+                        <h2>8</h2>
+                        <p>Notices</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 DASHBOARD CONTENT
+            ========================== -->
+
+            <section class="dashboard-grid">
+
+
+                <!-- RECENT NOTICE -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-heading">
+
+                        <h2>
+                            📢 Recent Notice
+                        </h2>
+
+                        <a href="notice.html">
+                            View All
+                        </a>
+
+                    </div>
+
+                    <div class="notice-list">
+
+                        <div class="notice-item">
+
+                            <span>📌</span>
+
+                            <p>
+                                Semester Examination starts
+                                10 August 2026.
+                            </p>
+
+                        </div>
+
+
+                        <div class="notice-item">
+
+                            <span>📌</span>
+
+                            <p>
+                                Assignment submission last date
+                                is 30 July 2026.
+                            </p>
+
+                        </div>
+
+
+                        <div class="notice-item">
+
+                            <span>📌</span>
+
+                            <p>
+                                Sports Week registration is open.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- UPCOMING EVENTS -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-heading">
+
+                        <h2>
+                            🗓️ Upcoming Events
+                        </h2>
+
+                        <a href="events.html">
+                            View All
+                        </a>
+
+                    </div>
+
+                    <div id="dashboardEvents">
+
+                        <p class="loading">
+                            Loading events...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 QUICK ACTIONS
+            ========================== -->
+
+            <section class="dashboard-card quick-actions">
+
+                <h2>
+                    ⚡ Quick Actions
+                </h2>
+
+                <div class="quick-action-grid">
+
+                    <a href="registration.html">
+                        📝 Register Student
+                    </a>
+
+                    <a href="courses.html">
+                        📚 View Courses
+                    </a>
+
+                    <a href="assignment.html">
+                        📝 View Assignments
+                    </a>
+
+                    <a href="faq.html">
+                        ❓ Frequently Asked Questions
+                    </a>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         HELP MODAL
+    ========================== -->
+
+    <div
+        id="helpModal"
+        class="modal"
+        hidden
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="helpTitle">
+
+        <div class="modal-content">
+
+            <button
+                id="closeModal"
+                class="modal-close"
+                type="button"
+                aria-label="Close help window">
+                ×
+            </button>
+
+            <h2 id="helpTitle">
+                ❓ Student Portal Help
+            </h2>
+
+            <p>
+                Use the sidebar to access courses, assignments,
+                attendance, faculty, notices and events.
+            </p>
+
+            <p>
+                Use the Theme button to switch between
+                light and dark mode.
+            </p>
+
+            <p>
+                For common questions, visit the FAQ page.
+            </p>
+
+            <a
+                href="faq.html"
+                class="modal-link">
+                Open FAQ →
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
