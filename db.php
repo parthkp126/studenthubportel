@@ -1,4 +1,3 @@
-
 <?php
 $host = "localhost";
 $dbname = "studentportelhub";
@@ -16,7 +15,12 @@ try {
             PDO::ATTR_EMULATE_PREPARES => false
         ]
     );
-} catch (PDOException $e) {
+
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+    $mysqli = new mysqli($host, $dbuser, $dbpass, $dbname);
+    $mysqli->set_charset("utf8mb4");
+
+} catch (Throwable $e) {
     error_log($e->getMessage());
 
     http_response_code(500);
