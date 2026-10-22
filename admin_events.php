@@ -12,6 +12,7 @@ if ($_SESSION["role"] !== "Admin") {
 }
 
 require_once __DIR__ . "/db.php";
+require_once __DIR__ . "/audit_log.php";
 
 $message = "";
 $messageType = "";
@@ -92,15 +93,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 );
 
                 $stmt->execute([
-                    "event_name" => $eventName,
-                    "event_date" => $eventDate,
-                    "venue" => $venue,
-                    "description" => $description,
-                    "category" => $category,
-                    "poster_path" => $posterPath
-                ]);
+    "event_name" => $eventName,
+    "event_date" => $eventDate,
+    "venue" => $venue,
+    "description" => $description,
+    "category" => $category,
+    "poster_path" => $posterPath
+]);
 
-                $message = "Event created successfully.";
+$eventId = (int) $conn->lastInsertId();
+auditLog(
+    "Event created",
+    "Event ID: " . $eventId . "; Name: " . $eventName
+);
+
+$message = "Event created successfully.";
                 $messageType = "success";
             } catch (PDOException $e) {
                 if ($posterPath !== null && is_file(__DIR__ . "/" . $posterPath)) {
