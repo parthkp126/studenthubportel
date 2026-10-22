@@ -12,6 +12,7 @@ if ($_SESSION["role"] !== "Admin") {
 }
 
 require_once __DIR__ . "/db.php";
+require_once __DIR__ . "/audit_log.php";
 
 function escapeHtml($value)
 {
@@ -50,6 +51,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["confirm"] ?? "") === "yes"
         "DELETE FROM events WHERE event_id = :event_id"
     );
     $deleteStmt->execute(["event_id" => $eventId]);
+
+    if ($deleteStmt->rowCount() > 0) {
+        auditLog(
+            "Event deleted",
+            "Event ID: " . $eventId . "; Name: " . $event["event_name"]
+        );
+    } else {
+        http_response_code(500);
+        exit("Could not delete the event.");
+    }
 
     if (!empty($event["poster_path"])) {
         $relativePath = str_replace("\\", "/", $event["poster_path"]);
@@ -144,6 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["confirm"] ?? "") === "yes"
                 name="event_id"
                 value="<?= escapeHtml($event["event_id"]) ?>"
             >
+
             <button
                 class="delete-button"
                 type="submit"
@@ -151,6 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["confirm"] ?? "") === "yes"
                 value="yes">
                 Delete Event
             </button>
+
             <button type="submit" name="confirm" value="no">
                 Cancel
             </button>
