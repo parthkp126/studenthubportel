@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Profile - Student Portal Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .profile-section {
+            width: 90%;
+            max-width: 750px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .profile-section h2 {
+            color: #123c69;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #1e6091;
+            margin-bottom: 25px;
+        }
+
+        .profile-info {
+            text-align: left;
+        }
+
+        .profile-info p {
+            background: #f4f7fb;
+            padding: 14px;
+            margin: 10px 0;
+            border-left: 4px solid #1e6091;
+            border-radius: 7px;
+        }
+
+        .profile-info b {
+            color: #123c69;
+        }
+
+        #themeBtn {
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        /* Profile page dark theme */
+        body.dark header,
+        body.dark .profile-section {
+            background: #1e293b;
+            color: #e5e7eb;
+        }
+
+        body.dark header a {
+            color: #e5e7eb;
+        }
+
+        body.dark .profile-section h2 {
+            color: #bfdbfe;
+        }
+
+        body.dark .profile-info p {
+            background: #172033;
+            color: #e5e7eb;
+            border-left-color: #60a5fa;
+        }
+
+        body.dark .profile-info b {
+            color: #bfdbfe;
+        }
+
+        body.dark #themeBtn {
+            border-color: #475569;
+            background: #334155;
+            color: #e5e7eb;
+        }
+
+        @media (max-width: 700px) {
+            .profile-section {
+                width: 95%;
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <h1>Student Portal Hub</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="assignment.html">Assignments</a>
+        <a href="attandance.html">Attendance</a>
+        <a href="faculty.html">Faculty</a>
+        <a href="notic.html">Notice</a>
+        <a href="profile.html" class="active">Profile</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="login-btn">Login</a>
+
+        <button type="button" id="themeBtn">🌙 Theme</button>
+    </nav>
+</header>
+
+<main>
+    <section class="profile-section">
+        <h2>Student Profile</h2>
+
+        <img
+            src="assets/student.jpg"
+            alt="Student Photo"
+            class="profile-photo"
+        >
+
+        <div class="profile-info">
+            <p><b>Name:</b> Parth Kaklotar</p>
+            <p><b>Enrollment No:</b> 25TCSF92</p>
+            <p><b>Course:</b> B.Tech Computer Science</p>
+            <p><b>Semester:</b> 1</p>
+            <p><b>Email:</b> parthkaklotar544@gmail.com</p>
+            <p><b>Phone:</b> 9876543210</p>
+            <p><b>College:</b> CSPIT, CHARUSAT</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Student Portal Hub</p>
+</footer>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
