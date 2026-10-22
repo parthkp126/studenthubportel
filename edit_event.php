@@ -12,6 +12,7 @@ if ($_SESSION["role"] !== "Admin") {
 }
 
 require_once __DIR__ . "/db.php";
+require_once __DIR__ . "/audit_log.php";
 
 function escapeHtml($value)
 {
@@ -62,30 +63,41 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $message = "Please enter a valid event date.";
         $messageType = "error";
     } else {
-        $updateStmt = $conn->prepare(
-            "UPDATE events
-             SET event_name = :event_name,
-                 event_date = :event_date,
-                 venue = :venue,
-                 description = :description,
-                 category = :category
-             WHERE event_id = :event_id"
-        );
+        try {
+            $updateStmt = $conn->prepare(
+                "UPDATE events
+                 SET event_name = :event_name,
+                     event_date = :event_date,
+                     venue = :venue,
+                     description = :description,
+                     category = :category
+                 WHERE event_id = :event_id"
+            );
 
-        $updateStmt->execute([
-            "event_name" => $eventName,
-            "event_date" => $eventDate,
-            "venue" => $venue,
-            "description" => $description,
-            "category" => $category,
-            "event_id" => $eventId
-        ]);
+            $updateStmt->execute([
+                "event_name" => $eventName,
+                "event_date" => $eventDate,
+                "venue" => $venue,
+                "description" => $description,
+                "category" => $category,
+                "event_id" => $eventId
+            ]);
 
-        $stmt->execute(["event_id" => $eventId]);
-        $event = $stmt->fetch();
+            auditLog(
+                "Event updated",
+                "Event ID: " . $eventId . "; Name: " . $eventName
+            );
 
-        $message = "Event updated successfully.";
-        $messageType = "success";
+            $stmt->execute(["event_id" => $eventId]);
+            $event = $stmt->fetch();
+
+            $message = "Event updated successfully.";
+            $messageType = "success";
+        } catch (PDOException $e) {
+            error_log("Event update error: " . $e->getMessage());
+            $message = "Could not update the event. Please check the database.";
+            $messageType = "error";
+        }
     }
 }
 ?>
