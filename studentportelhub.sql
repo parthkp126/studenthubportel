@@ -37,16 +37,6 @@ CREATE TABLE `api_students` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `api_students`
---
-
-INSERT INTO `api_students` (`id`, `name`, `email`, `course`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Parth Kaklotar', 'parthkaklotar544@gmail.com', 'Computer Science', 'Active', '2026-10-22 07:10:23', '2026-10-22 07:10:23'),
-(2, 'vraj patel', 'vraj@example.com', 'Information Technology', 'Inactive', '2026-10-22 07:10:59', '2026-10-22 07:14:01'),
-(4, 'vraj italiya', 'vrajp@example.com', 'Computer Science', 'Active', '2026-10-22 07:23:06', '2026-10-22 07:23:06'),
-(5, 'manas gamdha', 'manas@example.com', 'Information Technology', 'Active', '2026-10-22 07:25:09', '2026-10-22 07:25:09');
-
 -- --------------------------------------------------------
 
 --
@@ -61,13 +51,6 @@ CREATE TABLE `audit_logs` (
   `ip_address` varchar(45) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `audit_logs`
---
-
-INSERT INTO `audit_logs` (`id`, `user_id`, `action`, `details`, `ip_address`, `created_at`) VALUES
-(1, 1, 'Event created', 'Event ID: 3; Name: Run for Unity', '::1', '2026-10-22 08:01:10');
 
 -- --------------------------------------------------------
 
@@ -85,14 +68,6 @@ CREATE TABLE `events` (
   `poster_path` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `events`
---
-
-INSERT INTO `events` (`event_id`, `event_name`, `event_date`, `venue`, `description`, `category`, `poster_path`) VALUES
-(1, 'Innovation & Technology Workshop', '2026-10-20', 'College Auditorium', 'A student workshop on innovation and technology at CHARUSAT.', 'Workshop', 'event_uploads/da6742f4174f7be1667c767366132890.png'),
-(3, 'Run for Unity', '2026-10-22', 'College Auditorium', 'full enjoy', 'Sports', 'event_uploads/f49325d4a0e530b35b8efdf24725e73f.png');
-
 -- --------------------------------------------------------
 
 --
@@ -104,13 +79,6 @@ CREATE TABLE `registrations` (
   `student_id` int(11) DEFAULT NULL,
   `event_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `registrations`
---
-
-INSERT INTO `registrations` (`registration_id`, `student_id`, `event_id`) VALUES
-(1, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -125,16 +93,6 @@ CREATE TABLE `students` (
   `course` varchar(100) DEFAULT NULL,
   `status` enum('Active','Inactive') NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `students`
---
-
-INSERT INTO `students` (`student_id`, `name`, `email`, `course`, `status`) VALUES
-(1, 'PARTH KAKLOTAR', 'parthkaklotar544@gmail.com', 'Computer Science', 'Active'),
-(2, 'nilkandh valani', 'nilkandh@example.com', 'Information Technology', 'Active'),
-(3, 'vraj italiya', 'vraj@example.com', 'Computer Engineering', 'Active'),
-(4, 'manas patel', 'manas@example.com', 'Computer Science', 'Inactive');
 
 -- --------------------------------------------------------
 
@@ -156,15 +114,6 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `enrollment`, `email`, `mobile`, `password`, `course`, `year`, `gender`, `role`, `created_at`) VALUES
-(1, 'Parth Kaklotar', '25CS028', 'parthkaklotar544@gmail.com', '1234567893', '$2y$10$o7QYmk48/V0lSljwFUepV.qMP.jg7hE/BbyPnThMreKg90DsQL3ry', 'Computer Science', 'Second Year', 'Male', 'Admin', '2026-10-14 07:37:30'),
-(2, 'nilkandh valani', '25EC121', 'nilkandh@example.com', '1335255768', '$2y$10$zxdneuE3KqslWcloE0uaTOpdIvZoNRrS7ZUVbbdwQYIdbG8VSes3i', 'Computer Science', 'Second Year', 'Male', 'Student', '2026-10-14 11:47:20');
-
---
 -- Indexes for dumped tables
 --
 
