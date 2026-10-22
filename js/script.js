@@ -1,1175 +1,620 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-
     setupTheme();
     setupMenu();
     setupModal();
     setupActiveSidebar();
-    setupRegistration();
+    setupEvents();
+    setupFAQ();
+    setupApiStudents();
 
     if (document.getElementById("eventsContainer")) {
-        setupEvents();
         loadEvents();
     }
 
     if (document.getElementById("faqContainer")) {
-        setupFAQ();
         loadFAQs();
     }
-
 });
 
-
 function setupTheme() {
-
     const button = document.getElementById("themeBtn");
-
     if (!button) return;
 
     button.addEventListener("click", function () {
-
         document.body.classList.toggle("dark");
-
-        if (document.body.classList.contains("dark")) {
-            button.textContent = "☀️";
-        } else {
-            button.textContent = "🌙 Theme";
-        }
-
+        button.textContent = document.body.classList.contains("dark")
+            ? "☀️"
+            : "🌙 Theme";
     });
-
 }
 
-
 function setupMenu() {
-
     const button = document.getElementById("menuBtn");
     const sidebar = document.getElementById("sidebar");
-
     if (!button || !sidebar) return;
 
     button.addEventListener("click", function () {
-
+        sidebar.classList.toggle("active");
         sidebar.classList.toggle("open");
 
-        const isOpen = sidebar.classList.contains("open");
+        const isOpen =
+            sidebar.classList.contains("active") ||
+            sidebar.classList.contains("open");
 
-        button.setAttribute("aria-expanded", isOpen);
-
+        button.setAttribute("aria-expanded", String(isOpen));
     });
-
 }
 
-
 function setupModal() {
-
     const helpButton = document.getElementById("helpBtn");
     const closeButton = document.getElementById("closeModal");
     const modal = document.getElementById("helpModal");
-
     if (!modal) return;
 
     if (helpButton) {
-
         helpButton.addEventListener("click", function () {
             modal.hidden = false;
         });
-
     }
 
     if (closeButton) {
-
         closeButton.addEventListener("click", function () {
             modal.hidden = true;
         });
-
     }
 
+    modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.hidden = true;
+        }
+    });
 }
-
-
-/* =========================
-   ACTIVE SIDEBAR
-========================= */
 
 function setupActiveSidebar() {
+    const currentPage = window.location.pathname
+        .split("/")
+        .pop()
+        .toLowerCase();
 
-    const links = document.querySelectorAll(".sidebar a");
-
-    const currentPage =
-        window.location.pathname
-            .split("/")
-            .pop()
-            .toLowerCase();
-
-    links.forEach(function (link) {
-
+    document.querySelectorAll(".sidebar a").forEach(function (link) {
         const href = link.getAttribute("href");
-
         if (!href) return;
 
-        if (href.toLowerCase() === currentPage) {
+        const linkPage = href.split("#")[0].split("/").pop().toLowerCase();
+
+        if (linkPage && linkPage === currentPage) {
             link.classList.add("active");
         }
-
     });
-
 }
-
-
-/* =========================
-   REGISTRATION
-========================= */
-
-function setupRegistration() {
-
-    const form = document.getElementById("registrationForm");
-
-    if (!form) return;
-
-    const message =
-        document.getElementById("registrationMessage");
-
-    if (!message) return;
-
-    const password =
-        document.getElementById("password");
-
-    const confirmPassword =
-        document.getElementById("confirmPassword");
-
-    const strengthText =
-        document.getElementById("strengthText");
-
-    const strengthBar =
-        document.getElementById("strengthBar");
-
-    const resetButton =
-        document.getElementById("resetRegistration");
-
-
-    form.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-        clearRegistrationErrors();
-
-        message.textContent =
-            "⏳ Submitting registration...";
-
-        message.className =
-            "registration-message";
-
-
-        const formData = new FormData(form);
-
-
-        fetch("process.php", {
-            method: "POST",
-            body: formData
-        })
-
-        .then(function (response) {
-
-            return response.text();
-
-        })
-
-        .then(function (text) {
-
-            let data;
-
-            try {
-
-                data = JSON.parse(text);
-
-            } catch (error) {
-
-                throw new Error("Invalid server response");
-
-            }
-
-
-            if (data.success) {
-
-                message.textContent =
-                    "✅ " + data.message;
-
-                message.className =
-                    "registration-message success";
-
-
-                form.reset();
-
-
-                if (strengthText) {
-
-                    strengthText.textContent =
-                        "Password strength: Not entered";
-
-                }
-
-
-                if (strengthBar) {
-
-                    strengthBar.style.width =
-                        "0%";
-
-                }
-
-            } else {
-
-                message.textContent =
-                    "❌ " + data.message;
-
-                message.className =
-                    "registration-message error";
-
-
-                if (data.errors) {
-
-                    Object.keys(data.errors).forEach(function (field) {
-
-                        const errorElement =
-                            document.getElementById(
-                                field + "Error"
-                            );
-
-
-                        if (errorElement) {
-
-                            errorElement.textContent =
-                                data.errors[field];
-
-                        }
-
-                    });
-
-                }
-
-            }
-
-        })
-
-        .catch(function (error) {
-
-            console.error(error);
-
-            message.textContent =
-                "❌ Unable to connect to the server.";
-
-            message.className =
-                "registration-message error";
-
-        });
-
-    });
-
-
-    /* PASSWORD STRENGTH */
-
-    if (password) {
-
-        password.addEventListener("input", function () {
-
-            const value = password.value;
-
-
-            if (value === "") {
-
-                if (strengthText) {
-
-                    strengthText.textContent =
-                        "Password strength: Not entered";
-
-                }
-
-                if (strengthBar) {
-
-                    strengthBar.style.width =
-                        "0%";
-
-                }
-
-                return;
-
-            }
-
-
-            let score = 0;
-
-
-            if (value.length >= 8) {
-                score++;
-            }
-
-            if (/[a-z]/.test(value)) {
-                score++;
-            }
-
-            if (/[A-Z]/.test(value)) {
-                score++;
-            }
-
-            if (/[0-9]/.test(value)) {
-                score++;
-            }
-
-            if (/[@$!%*?&]/.test(value)) {
-                score++;
-            }
-
-
-            if (score <= 2) {
-
-                strengthText.textContent =
-                    "Password strength: Weak";
-
-                strengthBar.style.width =
-                    "30%";
-
-            }
-
-            else if (score <= 4) {
-
-                strengthText.textContent =
-                    "Password strength: Medium";
-
-                strengthBar.style.width =
-                    "65%";
-
-            }
-
-            else {
-
-                strengthText.textContent =
-                    "Password strength: Strong";
-
-                strengthBar.style.width =
-                    "100%";
-
-            }
-
-        });
-
-    }
-
-
-    /* CONFIRM PASSWORD */
-
-    if (confirmPassword) {
-
-        confirmPassword.addEventListener("input", function () {
-
-            const confirmError =
-                document.getElementById(
-                    "confirmPasswordError"
-                );
-
-
-            if (!confirmError) return;
-
-
-            if (
-                password &&
-                confirmPassword.value !== password.value
-            ) {
-
-                confirmError.textContent =
-                    "Passwords do not match.";
-
-            }
-
-            else {
-
-                confirmError.textContent =
-                    "";
-
-            }
-
-        });
-
-    }
-
-
-    /* RESET */
-
-    if (resetButton) {
-
-        resetButton.addEventListener("click", function () {
-
-            clearRegistrationErrors();
-
-            message.textContent =
-                "";
-
-            message.className =
-                "registration-message";
-
-
-            if (strengthText) {
-
-                strengthText.textContent =
-                    "Password strength: Not entered";
-
-            }
-
-
-            if (strengthBar) {
-
-                strengthBar.style.width =
-                    "0%";
-
-            }
-
-        });
-
-    }
-
-}
-
-
-function clearRegistrationErrors() {
-
-    document
-        .querySelectorAll(".field-error")
-        .forEach(function (error) {
-
-            error.textContent = "";
-
-        });
-
-}
-
-
-/* =========================
-   EVENTS
-========================= */
 
 let events = [];
 let filteredEvents = [];
 let eventPage = 1;
-
 const eventsPerPage = 6;
 
-
 function setupEvents() {
-
-    const search =
-        document.getElementById("eventSearch");
-
-    const filter =
-        document.getElementById("eventFilter");
-
-    const sort =
-        document.getElementById("eventSort");
-
+    const search = document.getElementById("eventSearch");
+    const filter = document.getElementById("eventFilter");
+    const sort = document.getElementById("eventSort");
 
     if (search) {
-
         search.addEventListener("input", function () {
-
             eventPage = 1;
-
             displayEvents();
-
         });
-
     }
-
 
     if (filter) {
-
         filter.addEventListener("change", function () {
-
             eventPage = 1;
-
             displayEvents();
-
         });
-
     }
-
 
     if (sort) {
-
         sort.addEventListener("change", function () {
-
             eventPage = 1;
-
             displayEvents();
-
         });
-
     }
-
 }
 
-
-function loadEvents() {
-
-    const container =
-        document.getElementById("eventsContainer");
-
+async function loadEvents() {
+    const container = document.getElementById("eventsContainer");
     if (!container) return;
 
+    const result = document.getElementById("eventResultInfo");
+    const errorBox = document.getElementById("eventError");
 
-    const result =
-        document.getElementById("eventResultInfo");
+    if (result) result.textContent = "Loading events...";
+    if (errorBox) errorBox.hidden = true;
 
-
-    if (result) {
-
-        result.textContent =
-            "⏳ Loading events...";
-
-    }
-
-
-    fetch("json/events.json")
-
-    .then(function (response) {
+    try {
+        const response = await fetch("json/events.json");
 
         if (!response.ok) {
-
-            throw new Error(
-                "events.json not found"
-            );
-
+            throw new Error("Could not load events.");
         }
 
-        return response.json();
-
-    })
-
-    .then(function (data) {
-
-        events =
-            Array.isArray(data)
-                ? data
-                : [];
-
+        const data = await response.json();
+        events = Array.isArray(data) ? data : [];
         eventPage = 1;
-
         displayEvents();
-
-    })
-
-    .catch(function (error) {
-
+    } catch (error) {
         console.error(error);
-
-        container.innerHTML = "";
-
-
-        const errorBox =
-            document.getElementById("eventError");
-
+        container.replaceChildren();
 
         if (errorBox) {
-
             errorBox.hidden = false;
-
-            errorBox.textContent =
-                "❌ Unable to load events.json";
-
+            errorBox.textContent = error.message;
         }
 
-
-        if (result) {
-
-            result.textContent =
-                "Unable to load events.";
-
-        }
-
-    });
-
+        if (result) result.textContent = "Unable to load events.";
+    }
 }
-
 
 function displayEvents() {
-
-    const container =
-        document.getElementById("eventsContainer");
-
+    const container = document.getElementById("eventsContainer");
     if (!container) return;
 
-
-    const searchInput =
-        document.getElementById("eventSearch");
-
-    const filterInput =
-        document.getElementById("eventFilter");
-
-    const sortInput =
-        document.getElementById("eventSort");
-
-
-    const searchText =
-        searchInput
-            ? searchInput.value
-                .toLowerCase()
-                .trim()
-            : "";
-
+    const searchText = (
+        document.getElementById("eventSearch")?.value || ""
+    ).toLowerCase().trim();
 
     const filterValue =
-        filterInput
-            ? filterInput.value
-            : "all";
-
+        document.getElementById("eventFilter")?.value || "all";
 
     const sortValue =
-        sortInput
-            ? sortInput.value
-            : "default";
+        document.getElementById("eventSort")?.value || "default";
 
+    filteredEvents = events.filter(function (event) {
+        const title = String(event.title || "").toLowerCase();
+        const description = String(event.description || "").toLowerCase();
+        const category = String(event.category || "");
 
-    filteredEvents =
-        events.filter(function (event) {
+        const matchesSearch =
+            title.includes(searchText) ||
+            description.includes(searchText);
 
-            const title =
-                String(event.title || "")
-                    .toLowerCase();
+        const matchesFilter =
+            filterValue === "all" || category === filterValue;
 
-            const description =
-                String(event.description || "")
-                    .toLowerCase();
-
-            const category =
-                String(event.category || "");
-
-
-            const searchMatch =
-                title.includes(searchText) ||
-                description.includes(searchText);
-
-
-            const filterMatch =
-                filterValue === "all" ||
-                category === filterValue;
-
-
-            return searchMatch && filterMatch;
-
-        });
-
+        return matchesSearch && matchesFilter;
+    });
 
     if (sortValue === "title-asc") {
-
-        filteredEvents.sort(function (a, b) {
-
-            return String(a.title)
-                .localeCompare(String(b.title));
-
-        });
-
-    }
-
-
-    if (sortValue === "title-desc") {
-
-        filteredEvents.sort(function (a, b) {
-
-            return String(b.title)
-                .localeCompare(String(a.title));
-
-        });
-
-    }
-
-
-    if (sortValue === "date-asc") {
-
-        filteredEvents.sort(function (a, b) {
-
-            return new Date(a.date) -
-                   new Date(b.date);
-
-        });
-
-    }
-
-
-    if (sortValue === "date-desc") {
-
-        filteredEvents.sort(function (a, b) {
-
-            return new Date(b.date) -
-                   new Date(a.date);
-
-        });
-
-    }
-
-
-    const totalPages =
-        Math.ceil(
-            filteredEvents.length /
-            eventsPerPage
+        filteredEvents.sort((a, b) =>
+            String(a.title || "").localeCompare(String(b.title || ""))
         );
+    } else if (sortValue === "title-desc") {
+        filteredEvents.sort((a, b) =>
+            String(b.title || "").localeCompare(String(a.title || ""))
+        );
+    } else if (sortValue === "date-asc") {
+        filteredEvents.sort(
+            (a, b) => new Date(a.date) - new Date(b.date)
+        );
+    } else if (sortValue === "date-desc") {
+        filteredEvents.sort(
+            (a, b) => new Date(b.date) - new Date(a.date)
+        );
+    }
 
+    const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
 
-    if (
-        eventPage > totalPages &&
-        totalPages > 0
-    ) {
-
+    if (totalPages > 0 && eventPage > totalPages) {
         eventPage = totalPages;
-
     }
 
+    const start = (eventPage - 1) * eventsPerPage;
+    const pageEvents = filteredEvents.slice(start, start + eventsPerPage);
 
-    const start =
-        (eventPage - 1) *
-        eventsPerPage;
-
-
-    const pageEvents =
-        filteredEvents.slice(
-            start,
-            start + eventsPerPage
-        );
-
-
-    container.innerHTML = "";
-
+    container.replaceChildren();
 
     if (pageEvents.length === 0) {
+        const card = document.createElement("div");
+        card.className = "event-card";
 
-        container.innerHTML = `
-            <div class="event-card">
-                <h2>No Events Found</h2>
-                <p>Try another search or filter.</p>
-            </div>
-        `;
+        const heading = document.createElement("h2");
+        heading.textContent = "No Events Found";
 
-        updateEventInfo();
+        const paragraph = document.createElement("p");
+        paragraph.textContent = "Try another search or filter.";
 
-        createEventPagination(totalPages);
-
-        return;
-
-    }
-
-
-    pageEvents.forEach(function (event) {
-
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "event-card";
-
-
-        card.innerHTML = `
-            <h2>${event.title || "Event"}</h2>
-
-            <p>
-                📅 <strong>Date:</strong>
-                ${event.date || "N/A"}
-            </p>
-
-            <p>
-                📂 <strong>Category:</strong>
-                ${event.category || "N/A"}
-            </p>
-
-            <p>
-                ${event.description || ""}
-            </p>
-        `;
-
-
+        card.append(heading, paragraph);
         container.appendChild(card);
+    } else {
+        pageEvents.forEach(function (event) {
+            const card = document.createElement("div");
+            card.className = "event-card";
 
-    });
+            const heading = document.createElement("h2");
+            heading.textContent = event.title || "Event";
 
+            const date = document.createElement("p");
+            date.textContent = "📅 Date: " + (event.date || "N/A");
+
+            const category = document.createElement("p");
+            category.textContent =
+                "📂 Category: " + (event.category || "N/A");
+
+            const description = document.createElement("p");
+            description.textContent = event.description || "";
+
+            card.append(heading, date, category, description);
+            container.appendChild(card);
+        });
+    }
 
     updateEventInfo();
-
     createEventPagination(totalPages);
-
 }
-
 
 function updateEventInfo() {
-
-    const result =
-        document.getElementById(
-            "eventResultInfo"
-        );
-
+    const result = document.getElementById("eventResultInfo");
     if (!result) return;
 
-
     result.textContent =
-        filteredEvents.length +
-        " event(s) found - Page " +
-        eventPage;
-
+        filteredEvents.length + " event(s) found - Page " + eventPage;
 }
-
 
 function createEventPagination(totalPages) {
-
-    const pagination =
-        document.getElementById(
-            "eventPagination"
-        );
-
+    const pagination = document.getElementById("eventPagination");
     if (!pagination) return;
 
-
-    pagination.innerHTML = "";
-
-
+    pagination.replaceChildren();
     if (totalPages <= 1) return;
 
-
-    const previous =
-        document.createElement("button");
-
-
-    previous.textContent =
-        "Previous";
-
-    previous.disabled =
-        eventPage === 1;
-
-
-    previous.addEventListener(
-        "click",
-        function () {
-
-            if (eventPage > 1) {
-
-                eventPage--;
-
-                displayEvents();
-
-            }
-
+    const previous = document.createElement("button");
+    previous.type = "button";
+    previous.textContent = "Previous";
+    previous.disabled = eventPage === 1;
+    previous.addEventListener("click", function () {
+        if (eventPage > 1) {
+            eventPage--;
+            displayEvents();
         }
-    );
-
-
+    });
     pagination.appendChild(previous);
 
+    for (let page = 1; page <= totalPages; page++) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = String(page);
 
-    for (
-        let i = 1;
-        i <= totalPages;
-        i++
-    ) {
-
-        const button =
-            document.createElement("button");
-
-
-        button.textContent =
-            i;
-
-
-        if (i === eventPage) {
-
+        if (page === eventPage) {
             button.classList.add("active");
-
         }
 
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                eventPage = i;
-
-                displayEvents();
-
-            }
-        );
-
-
-        pagination.appendChild(button);
-
-    }
-
-
-    const next =
-        document.createElement("button");
-
-
-    next.textContent =
-        "Next";
-
-
-    next.disabled =
-        eventPage === totalPages;
-
-
-    next.addEventListener(
-        "click",
-        function () {
-
-            if (eventPage < totalPages) {
-
-                eventPage++;
-
-                displayEvents();
-
-            }
-
-        }
-    );
-
-
-    pagination.appendChild(next);
-
-}
-
-
-/* =========================
-   FAQ
-========================= */
-
-let faqs = [];
-let filteredFAQs = [];
-let faqPage = 1;
-
-const faqsPerPage = 5;
-
-
-function setupFAQ() {
-
-    const search =
-        document.getElementById("faqSearch");
-
-    if (!search) return;
-
-
-    search.addEventListener(
-        "input",
-        function () {
-
-            faqPage = 1;
-
-            displayFAQs();
-
-        }
-    );
-
-}
-
-
-function loadFAQs() {
-
-    const container =
-        document.getElementById("faqContainer");
-
-    if (!container) return;
-
-
-    fetch("json/faqs.json")
-
-    .then(function (response) {
-
-        if (!response.ok) {
-
-            throw new Error(
-                "faqs.json not found"
-            );
-
-        }
-
-        return response.json();
-
-    })
-
-    .then(function (data) {
-
-        faqs =
-            Array.isArray(data)
-                ? data
-                : [];
-
-        faqPage = 1;
-
-
-        const loading =
-            document.getElementById(
-                "faqLoading"
-            );
-
-
-        if (loading) {
-
-            loading.style.display =
-                "none";
-
-        }
-
-
-        displayFAQs();
-
-    })
-
-    .catch(function (error) {
-
-        console.error(error);
-
-
-        const loading =
-            document.getElementById(
-                "faqLoading"
-            );
-
-
-        if (loading) {
-
-            loading.style.display =
-                "none";
-
-        }
-
-
-        const errorBox =
-            document.getElementById(
-                "faqError"
-            );
-
-
-        if (errorBox) {
-
-            errorBox.hidden = false;
-
-            errorBox.textContent =
-                "❌ Unable to load faqs.json";
-
-        }
-
-    });
-
-}
-
-
-function displayFAQs() {
-
-    const container =
-        document.getElementById(
-            "faqContainer"
-        );
-
-    if (!container) return;
-
-
-    const search =
-        document.getElementById(
-            "faqSearch"
-        );
-
-
-    const text =
-        search
-            ? search.value
-                .toLowerCase()
-                .trim()
-            : "";
-
-
-    filteredFAQs =
-        faqs.filter(function (faq) {
-
-            const question =
-                String(faq.question || "")
-                    .toLowerCase();
-
-            const answer =
-                String(faq.answer || "")
-                    .toLowerCase();
-
-
-            return (
-                question.includes(text) ||
-                answer.includes(text)
-            );
-
+        button.addEventListener("click", function () {
+            eventPage = page;
+            displayEvents();
         });
 
-
-    const totalPages =
-        Math.ceil(
-            filteredFAQs.length /
-            faqsPerPage
-        );
-
-
-    if (
-        faqPage > totalPages &&
-        totalPages > 0
-    ) {
-
-        faqPage = totalPages;
-
+        pagination.appendChild(button);
     }
 
-
-    const start =
-        (faqPage - 1) *
-        faqsPerPage;
-
-
-    const pageFAQs =
-        filteredFAQs.slice(
-            start,
-            start + faqsPerPage
-        );
-
-
-    container.innerHTML = "";
-
-
-    pageFAQs.forEach(function (faq) {
-
-        const item =
-            document.createElement("div");
-
-
-        item.className =
-            "faq-item";
-
-
-        item.innerHTML = `
-            <h3>
-                ${faq.question || "Question"}
-            </h3>
-
-            <p>
-                ${faq.answer ||
-                  "No answer available."}
-            </p>
-        `;
-
-
-        container.appendChild(item);
-
+    const next = document.createElement("button");
+    next.type = "button";
+    next.textContent = "Next";
+    next.disabled = eventPage === totalPages;
+    next.addEventListener("click", function () {
+        if (eventPage < totalPages) {
+            eventPage++;
+            displayEvents();
+        }
     });
-
-
-    const result =
-        document.getElementById(
-            "faqResultInfo"
-        );
-
-
-    if (result) {
-
-        result.textContent =
-            filteredFAQs.length +
-            " FAQ(s) found - Page " +
-            faqPage;
-
-    }
-
+    pagination.appendChild(next);
 }
 
+let faqs = [];
+
+function setupFAQ() {
+    const search = document.getElementById("faqSearch");
+
+    if (search) {
+        search.addEventListener("input", displayFAQs);
+    }
+}
+
+async function loadFAQs() {
+    const container = document.getElementById("faqContainer");
+    if (!container) return;
+
+    const loading = document.getElementById("faqLoading");
+    const errorBox = document.getElementById("faqError");
+
+    try {
+        const response = await fetch("json/faqs.json");
+
+        if (!response.ok) {
+            throw new Error("Could not load FAQs.");
+        }
+
+        const data = await response.json();
+        faqs = Array.isArray(data) ? data : [];
+
+        if (loading) loading.style.display = "none";
+        if (errorBox) errorBox.hidden = true;
+
+        displayFAQs();
+    } catch (error) {
+        console.error(error);
+
+        if (loading) loading.style.display = "none";
+
+        if (errorBox) {
+            errorBox.hidden = false;
+            errorBox.textContent = error.message;
+        }
+    }
+}
+
+function displayFAQs() {
+    const container = document.getElementById("faqContainer");
+    if (!container) return;
+
+    const searchText = (
+        document.getElementById("faqSearch")?.value || ""
+    ).toLowerCase().trim();
+
+    const matches = faqs.filter(function (faq) {
+        return (
+            String(faq.question || "").toLowerCase().includes(searchText) ||
+            String(faq.answer || "").toLowerCase().includes(searchText)
+        );
+    });
+
+    container.replaceChildren();
+
+    if (matches.length === 0) {
+        const empty = document.createElement("p");
+        empty.textContent = "No FAQs found.";
+        container.appendChild(empty);
+    } else {
+        matches.forEach(function (faq) {
+            const item = document.createElement("div");
+            item.className = "faq-item";
+
+            const question = document.createElement("h3");
+            question.textContent = faq.question || "Question";
+
+            const answer = document.createElement("p");
+            answer.textContent = faq.answer || "No answer available.";
+
+            item.append(question, answer);
+            container.appendChild(item);
+        });
+    }
+
+    const result = document.getElementById("faqResultInfo");
+    if (result) {
+        result.textContent = matches.length + " FAQ(s) found";
+    }
+}
+
+function setupApiStudents() {
+    const form = document.getElementById("apiStudentForm");
+    if (!form) return;
+
+    const idInput = document.getElementById("apiStudentId");
+    const nameInput = document.getElementById("apiStudentName");
+    const emailInput = document.getElementById("apiStudentEmail");
+    const courseInput = document.getElementById("apiStudentCourse");
+    const saveButton = document.getElementById("apiStudentSave");
+    const cancelButton = document.getElementById("apiStudentCancel");
+    const searchInput = document.getElementById("apiStudentSearch");
+    const courseFilter =
+        document.getElementById("apiStudentCourseFilter");
+    const rows = document.getElementById("apiStudentRows");
+    const loading = document.getElementById("apiStudentLoading");
+    const errorBox = document.getElementById("apiStudentError");
+    const message = document.getElementById("apiStudentMessage");
+
+    let students = [];
+    let searchTimer;
+
+    function showMessage(text, type) {
+        message.textContent = text;
+        message.className = type;
+    }
+
+    async function sendRequest(url, options = {}) {
+        const headers = {
+            Accept: "application/json",
+            ...(options.body
+                ? { "Content-Type": "application/json" }
+                : {}),
+            ...(options.headers || {})
+        };
+
+        const response = await fetch(url, {
+            ...options,
+            headers
+        });
+
+        let result;
+
+        try {
+            result = await response.json();
+        } catch {
+            throw new Error("Server response was not valid JSON.");
+        }
+
+        if (!response.ok || result.success !== true) {
+            throw new Error(result.message || "The request failed.");
+        }
+
+        return result;
+    }
+
+    function makeCell(value) {
+        const cell = document.createElement("td");
+        cell.textContent = value ?? "";
+        return cell;
+    }
+
+    function renderStudents(list) {
+        rows.replaceChildren();
+
+        if (list.length === 0) {
+            const row = document.createElement("tr");
+            const cell = document.createElement("td");
+            cell.colSpan = 5;
+            cell.textContent = "No active student records found.";
+            row.appendChild(cell);
+            rows.appendChild(row);
+            return;
+        }
+
+        list.forEach(function (student) {
+            const row = document.createElement("tr");
+
+            row.appendChild(makeCell(student.id));
+            row.appendChild(makeCell(student.name));
+            row.appendChild(makeCell(student.email));
+            row.appendChild(makeCell(student.course));
+
+            const actionsCell = document.createElement("td");
+
+            const editButton = document.createElement("button");
+            editButton.type = "button";
+            editButton.textContent = "Edit";
+            editButton.dataset.action = "edit";
+            editButton.dataset.id = student.id;
+
+            const deleteButton = document.createElement("button");
+            deleteButton.type = "button";
+            deleteButton.textContent = "Delete";
+            deleteButton.dataset.action = "delete";
+            deleteButton.dataset.id = student.id;
+
+            actionsCell.append(editButton, " ", deleteButton);
+            row.appendChild(actionsCell);
+            rows.appendChild(row);
+        });
+    }
+
+    async function loadStudents() {
+        loading.hidden = false;
+        errorBox.hidden = true;
+
+        const params = new URLSearchParams();
+
+        if (searchInput.value.trim()) {
+            params.set("search", searchInput.value.trim());
+        }
+
+        if (courseFilter.value) {
+            params.set("course", courseFilter.value);
+        }
+
+        const query = params.toString();
+        const url = query ? "api.php?" + query : "api.php";
+
+        try {
+            const result = await sendRequest(url);
+            students = result.data || [];
+            renderStudents(students);
+        } catch (error) {
+            errorBox.textContent = error.message;
+            errorBox.hidden = false;
+        } finally {
+            loading.hidden = true;
+        }
+    }
+
+    function resetStudentForm() {
+        form.reset();
+        idInput.value = "";
+        saveButton.textContent = "Add Student";
+        cancelButton.hidden = true;
+    }
+
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        showMessage("", "");
+
+        if (!form.reportValidity()) return;
+
+        const id = idInput.value;
+        const url = id
+            ? "api.php?id=" + encodeURIComponent(id)
+            : "api.php";
+
+        saveButton.disabled = true;
+
+        try {
+            const result = await sendRequest(url, {
+                method: id ? "PUT" : "POST",
+                body: JSON.stringify({
+                    name: nameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    course: courseInput.value
+                })
+            });
+
+            showMessage(result.message, "success");
+            resetStudentForm();
+            await loadStudents();
+        } catch (error) {
+            showMessage(error.message, "error");
+        } finally {
+            saveButton.disabled = false;
+        }
+    });
+
+    rows.addEventListener("click", async function (event) {
+        const button = event.target.closest("button[data-action]");
+        if (!button) return;
+
+        const student = students.find(function (item) {
+            return String(item.id) === button.dataset.id;
+        });
+
+        if (!student) return;
+
+        if (button.dataset.action === "edit") {
+            idInput.value = student.id;
+            nameInput.value = student.name;
+            emailInput.value = student.email;
+            courseInput.value = student.course;
+            saveButton.textContent = "Update Student";
+            cancelButton.hidden = false;
+            form.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+            return;
+        }
+
+        if (
+            button.dataset.action === "delete" &&
+            window.confirm("Mark this student as inactive?")
+        ) {
+            try {
+                const result = await sendRequest(
+                    "api.php?id=" + encodeURIComponent(student.id),
+                    { method: "DELETE" }
+                );
+
+                showMessage(result.message, "success");
+                await loadStudents();
+            } catch (error) {
+                showMessage(error.message, "error");
+            }
+        }
+    });
+
+    cancelButton.addEventListener("click", resetStudentForm);
+
+    searchInput.addEventListener("input", function () {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(loadStudents, 300);
+    });
+
+    courseFilter.addEventListener("change", loadStudents);
+
+    loadStudents();
+}
