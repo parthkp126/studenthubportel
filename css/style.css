@@ -1331,28 +1331,18 @@ body.dark .notification-banner {
     }
 }
 
-/* Fix notice bar and header overlap */
-.notification-banner {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 5000 !important;
-}
-
 .topbar {
-    position: fixed !important;
-    top: 42px !important;
-    z-index: 4000 !important;
+    position: static !important;
+    top: auto !important;
 }
 
 .sidebar {
-    top: 114px !important;
-    height: calc(100vh - 114px) !important;
+    top: 72px !important;
+    height: calc(100vh - 72px) !important;
 }
 
+.dashboard,
 .main-content,
-.page-content,
-.dashboard {
-    padding-top: 147px !important;
+.page-content {
+    padding-top: 35px !important;
 }
