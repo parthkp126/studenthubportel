@@ -1,10 +1,10 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Portal Hub - CHARUSAT</title>
+
     <link rel="stylesheet" href="css/style.css">
 
     <style>
@@ -61,560 +61,192 @@
 </head>
 
 <body>
-    <header class="topbar">
+
+<header class="topbar">
+    <button
+        id="menuBtn"
+        class="hamburger"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <a class="brand" href="index.html">🎓 Student Portal Hub</a>
+
+    <div class="top-actions">
+        <a href="profile.php">👤 Profile</a>
+        <a href="login.php">🔐 Login</a>
+        <button id="themeBtn" type="button">🌙 Theme</button>
+        <button id="helpBtn" type="button">❓ Help</button>
+    </div>
+</header>
+
+<div class="portal-layout">
+
+    <aside id="sidebar" class="sidebar" aria-label="Main navigation">
+        <h3>Menu</h3>
+
+        <a href="index.html" class="active" aria-current="page">🏠 Dashboard</a>
+        <a href="courses.html">📚 Courses</a>
+        <a href="assignment.html">📝 Assignments</a>
+        <a href="attendance.html">📊 Attendance</a>
+        <a href="faculty.html">👨‍🏫 Faculty</a>
+        <a href="notic.html">📢 Notice</a>
+        <a href="events.html">🗓️ Events</a>
+        <a href="student.php">🎓 Student Records</a>
+        <a href="student_api.html">🔄 Student API Practical</a>
+        <a href="registration.html">📝 Registration</a>
+        <a href="profile.php">👤 Profile</a>
+        <a href="faq.html">❓ FAQ</a>
+        <a href="contact.html">📞 Contact</a>
+        <a href="admin_events.php">⚙️ Admin Event Management</a>
+        <a href="login.php">🔐 Login</a>
+    </aside>
+
+    <main class="dashboard">
+
+        <section class="charusat-card">
+            <div>
+                <p class="small-text">CHARUSAT UNIVERSITY</p>
+                <h1>Welcome to Student Portal Hub</h1>
+                <p>
+                    Access your courses, assignments, attendance, events
+                    and student records from one portal.
+                </p>
+
+                <div class="portal-links">
+                    <a href="events.html">View Events</a>
+                    <a href="student.php">Student Records</a>
+                </div>
+            </div>
+
+            <img src="assets/charusat.jpeg" alt="CHARUSAT University">
+        </section>
+
+        <section class="welcome-card">
+            <div>
+                <p class="small-text">Welcome back 👋</p>
+                <h2>Hello, <span id="studentName">Student</span></h2>
+                <p>
+                    Enrollment No:
+                    <strong id="studentEnrollment">Not Registered</strong>
+                </p>
+            </div>
+
+            <div class="welcome-icon" aria-hidden="true">🎓</div>
+        </section>
+
+        <section class="stats-grid" aria-label="Portal statistics">
+            <div class="stat-card">
+                <div class="stat-icon" aria-hidden="true">👥</div>
+                <div>
+                    <h2 id="statUsers">—</h2>
+                    <p>Total Users</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" aria-hidden="true">🎓</div>
+                <div>
+                    <h2 id="statStudents">—</h2>
+                    <p>Active Students</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" aria-hidden="true">🗓️</div>
+                <div>
+                    <h2 id="statEvents">—</h2>
+                    <p>Upcoming Events</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" aria-hidden="true">📝</div>
+                <div>
+                    <h2 id="statRegistrations">—</h2>
+                    <p>Event Registrations</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-grid">
+
+            <div class="dashboard-card">
+                <div class="card-heading">
+                    <h2>📢 Recent Notice</h2>
+                    <a href="notic.html">View All</a>
+                </div>
+
+                <div
+                    id="dashboardNotices"
+                    class="notice-list"
+                    aria-live="polite">
+                    <p class="loading">Loading notices...</p>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-heading">
+                    <h2>🗓️ Upcoming Events</h2>
+                    <a href="events.html">View All</a>
+                </div>
+
+                <div id="dashboardEvents" aria-live="polite">
+                    <p class="loading">Loading events...</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="dashboard-card quick-actions">
+            <h2>⚡ Quick Actions</h2>
+
+            <div class="quick-action-grid">
+                <a href="registration.html">📝 Register Student</a>
+                <a href="courses.html">📚 View Courses</a>
+                <a href="assignment.html">📝 View Assignments</a>
+                <a href="events.html">🗓️ View Events</a>
+                <a href="student.php">🎓 Manage Student Records</a>
+                <a href="student_api.html">🔄 Student API Practical</a>
+                <a href="admin_events.php">⚙️ Manage Events</a>
+                <a href="faq.html">❓ Frequently Asked Questions</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Student Portal Hub</p>
+        </footer>
+
+    </main>
+</div>
+
+<div
+    id="helpModal"
+    class="modal"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="helpTitle">
+
+    <div class="modal-content">
         <button
-            id="menuBtn"
-            class="hamburger"
+            id="closeModal"
+            class="modal-close"
             type="button"
-            aria-label="Open navigation menu"
-            aria-expanded="false">
-            ☰
+            aria-label="Close help window">
+            ×
         </button>
 
-        <div class="brand">🎓 Student Portal Hub</div>
-
-        <div class="top-actions">
-            <a href="profile.php">👤 Profile</a>
-            <a href="login.php">🔐 Login</a>
-
-            <button id="themeBtn" type="button">🌙 Theme</button>
-            <button id="helpBtn" type="button">❓ Help</button>
-        </div>
-    </header>
-
-    <div class="portal-layout">
-        <aside id="sidebar" class="sidebar" aria-label="Main navigation">
-            <h3>Menu</h3>
-
-            <a href="index.html" class="active">🏠 Dashboard</a>
-            <a href="courses.html">📚 Courses</a>
-            <a href="assignment.html">📝 Assignments</a>
-            <a href="attendance.html">📊 Attendance</a>
-            <a href="faculty.html">👨‍🏫 Faculty</a>
-            <a href="notic.html">📢 Notice</a>
-            <a href="events.html">🗓️ Events</a>
-            <a href="student.php">🎓 Student Records</a>
-            <a href="student_api.html">🔄 Student API Practical</a>
-            <a href="registration.html">📝 Registration</a>
-            <a href="profile.php">👤 Profile</a>
-            <a href="faq.html">❓ FAQ</a>
-            <a href="contact.html">📞 Contact</a>
-            <a href="admin_events.php">⚙️ Admin Event Management</a>
-            <a href="login.php">🔐 Login</a>
-        </aside>
-
-        <main class="dashboard">
-            <section class="charusat-card">
-                <div>
-                    <p class="small-text">CHARUSAT UNIVERSITY</p>
-                    <h1>Welcome to Student Portal Hub</h1>
-                    <p>
-                        Access your courses, assignments, attendance,
-                        events and student records from one portal.
-                    </p>
-
-                    <div class="portal-links">
-                        <a href="events.html">View Events</a>
-                        <a href="student.php">Student Records</a>
-                    </div>
-                </div>
-
-                <img src="assets/charusat.jpeg" alt="CHARUSAT University">
-            </section>
-
-            <section class="welcome-card">
-                <div>
-                    <p class="small-text">Welcome back 👋</p>
-                    <h2>
-                        Hello,
-                        <span id="studentName">Student</span>
-                    </h2>
-                    <p>
-                        Enrollment No:
-                        <strong id="studentEnrollment">Not Registered</strong>
-                    </p>
-                </div>
-
-                <div class="welcome-icon" aria-hidden="true">🎓</div>
-            </section>
-
-            <section class="slider" aria-label="Student portal information slider">
-                <div class="slide active-slide" data-slide="0">
-                    <div class="slide-content">
-                        <span class="slide-icon">🎓</span>
-                        <div>
-                            <h2>Welcome to Student Portal Hub</h2>
-                            <p>
-                                Manage your courses, assignments, attendance
-                                and college activities from one place.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slide" data-slide="1">
-                    <div class="slide-content">
-                        <span class="slide-icon">📚</span>
-                        <div>
-                            <h2>Manage Your Courses</h2>
-                            <p>
-                                Quickly access course and faculty information
-                                whenever you need it.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slide" data-slide="2">
-                    <div class="slide-content">
-                        <span class="slide-icon">📝</span>
-                        <div>
-                            <h2>Track Your Assignments</h2>
-                            <p>
-                                Keep track of pending and completed academic tasks.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slider-controls">
-                    <button id="prevSlide" type="button" aria-label="Previous slide">
-                        ❮
-                    </button>
-
-                    <div
-                        id="sliderDots"
-                        class="slider-dots"
-                        aria-label="Slider navigation">
-                    </div>
-
-                    <button id="nextSlide" type="button" aria-label="Next slide">
-                        ❯
-                    </button>
-                </div>
-            </section>
-
-            <section class="stats-grid" aria-label="Portal statistics">
-                <div class="stat-card">
-                    <div class="stat-icon" aria-hidden="true">👥</div>
-                    <div>
-                        <h2 id="statUsers">—</h2>
-                        <p>Total Users</p>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon" aria-hidden="true">🎓</div>
-                    <div>
-                        <h2 id="statStudents">—</h2>
-                        <p>Active Students</p>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon" aria-hidden="true">🗓️</div>
-                    <div>
-                        <h2 id="statEvents">—</h2>
-                        <p>Upcoming Events</p>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon" aria-hidden="true">📝</div>
-                    <div>
-                        <h2 id="statRegistrations">—</h2>
-                        <p>Event Registrations</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="dashboard-grid">
-                <div class="dashboard-card">
-                    <div class="card-heading">
-                        <h2>📢 Recent Notice</h2>
-                        <a href="notic.html">View All</a>
-                    </div>
-
-                    <div
-                        id="dashboardNotices"
-                        class="notice-list"
-                        aria-live="polite">
-                        <p class="loading">Loading notices...</p>
-                    </div>
-                </div>
-
-                <div class="dashboard-card">
-                    <div class="card-heading">
-                        <h2>🗓️ Upcoming Events</h2>
-                        <a href="events.html">View All</a>
-                    </div>
-
-                    <div id="dashboardEvents">
-                        <p class="loading">Loading events...</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="dashboard-card quick-actions">
-                <h2>⚡ Quick Actions</h2>
-
-                <div class="quick-action-grid">
-                    <a href="registration.html">📝 Register Student</a>
-                    <a href="courses.html">📚 View Courses</a>
-                    <a href="assignment.html">📝 View Assignments</a>
-                    <a href="events.html">🗓️ View Events</a>
-                    <a href="student.php">🎓 Manage Student Records</a>
-                    <a href="student_api.html">🔄 Student API Practical</a>
-                    <a href="admin_events.php">⚙️ Manage Events</a>
-                    <a href="faq.html">❓ Frequently Asked Questions</a>
-                </div>
-            </section>
-        </main>
+        <h2 id="helpTitle">❓ Student Portal Help</h2>
+        <p>Use the sidebar to open courses, events, student records and other portal pages.</p>
+        <p>Use the Theme button to switch between light and dark mode.</p>
+        <p>For common questions, visit the FAQ page.</p>
+        <a href="faq.html" class="modal-link">Open FAQ →</a>
     </div>
+</div>
 
-    <div
-        id="helpModal"
-        class="modal"
-        hidden
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="helpTitle">
-
-        <div class="modal-content">
-            <button
-                id="closeModal"
-                class="modal-close"
-                type="button"
-                aria-label="Close help window">
-                ×
-            </button>
-
-            <h2 id="helpTitle">❓ Student Portal Help</h2>
-            <p>Use the sidebar to open courses, events, student records and other portal pages.</p>
-            <p>Use the Theme button to switch between light and dark mode.</p>
-            <p>For common questions, visit the FAQ page.</p>
-            <a href="faq.html" class="modal-link">Open FAQ →</a>
-        </div>
-    </div>
-
-    <script src="js/script.js"></script>
+<script src="js/script.js" defer></script>
 </body>
 </html>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal Hub - CHARUSAT</title>
-    <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        #helpModal[hidden] {
-            display: none !important;
-        }
-
-        .charusat-card {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            margin-bottom: 24px;
-            padding: 24px;
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-        }
-
-        .charusat-card img {
-            width: min(360px, 100%);
-            max-height: 230px;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-
-        .portal-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 18px;
-        }
-
-        .portal-links a {
-            display: inline-block;
-            padding: 10px 14px;
-            border-radius: 6px;
-            background: #2459d3;
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        @media (max-width: 700px) {
-            .charusat-card {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .charusat-card img {
-                width: 100%;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <header class="topbar">
-        <button
-            id="menuBtn"
-            class="hamburger"
-            type="button"
-            aria-label="Open navigation menu"
-            aria-expanded="false">
-            ☰
-        </button>
-
-        <div class="brand">🎓 Student Portal Hub</div>
-
-        <div class="top-actions">
-            <a href="profile.html">👤 Profile</a>
-            <a href="login.php">🔐 Login</a>
-
-            <button id="themeBtn" type="button">
-                🌙 Theme
-            </button>
-
-            <button id="helpBtn" type="button">
-                ❓ Help
-            </button>
-        </div>
-    </header>
-
-    <div class="portal-layout">
-        <aside id="sidebar" class="sidebar" aria-label="Main navigation">
-            <h3>Menu</h3>
-
-            <a href="index.html" class="active">🏠 Dashboard</a>
-            <a href="courses.html">📚 Courses</a>
-            <a href="assignment.html">📝 Assignments</a>
-            <a href="attendance.html">📊 Attendance</a>
-            <a href="faculty.html">👨‍🏫 Faculty</a>
-            <a href="notic.html">📢 Notice</a>
-            <a href="events.html">🗓️ Events</a>
-            <a href="student.php">🎓 Student Records</a>
-            <a href="student_api.html">🔄 Student API Practical</a>
-            <a href="registration.html">📝 Registration</a>
-            <a href="profile.html">👤 Profile</a>
-            <a href="faq.html">❓ FAQ</a>
-            <a href="contact.html">📞 Contact</a>
-            <a href="admin_events.php">⚙️ Admin Event Management</a>
-            <a href="login.php">🔐 Login</a>
-        </aside>
-
-        <main class="dashboard">
-            <section class="charusat-card">
-                <div>
-                    <p class="small-text">CHARUSAT UNIVERSITY</p>
-                    <h1>Welcome to Student Portal Hub</h1>
-                    <p>
-                        Access your courses, assignments, attendance,
-                        events and student records from one portal.
-                    </p>
-
-                    <div class="portal-links">
-                        <a href="events.html">View Events</a>
-                        <a href="student.php">Student Records</a>
-                    </div>
-                </div>
-
-                <img src="assets/charusat.jpeg" alt="CHARUSAT University">
-            </section>
-
-            <section class="welcome-card">
-                <div>
-                    <p class="small-text">Welcome back 👋</p>
-                    <h2>
-                        Hello,
-                        <span id="studentName">Student</span>
-                    </h2>
-                    <p>
-                        Enrollment No:
-                        <strong id="studentEnrollment">Not Registered</strong>
-                    </p>
-                </div>
-
-                <div class="welcome-icon" aria-hidden="true">🎓</div>
-            </section>
-
-            <section class="slider" aria-label="Student portal information slider">
-                <div class="slide active-slide" data-slide="0">
-                    <div class="slide-content">
-                        <span class="slide-icon">🎓</span>
-                        <div>
-                            <h2>Welcome to Student Portal Hub</h2>
-                            <p>
-                                Manage your courses, assignments, attendance
-                                and college activities from one place.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slide" data-slide="1">
-                    <div class="slide-content">
-                        <span class="slide-icon">📚</span>
-                        <div>
-                            <h2>Manage Your Courses</h2>
-                            <p>
-                                Quickly access course and faculty information
-                                whenever you need it.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slide" data-slide="2">
-                    <div class="slide-content">
-                        <span class="slide-icon">📝</span>
-                        <div>
-                            <h2>Track Your Assignments</h2>
-                            <p>
-                                Keep track of pending and completed academic tasks.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slider-controls">
-                    <button id="prevSlide" type="button" aria-label="Previous slide">
-                        ❮
-                    </button>
-
-                    <div
-                        id="sliderDots"
-                        class="slider-dots"
-                        aria-label="Slider navigation">
-                    </div>
-
-                    <button id="nextSlide" type="button" aria-label="Next slide">
-                        ❯
-                    </button>
-                </div>
-            </section>
-
-            <section class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">📚</div>
-                    <div>
-                        <h2>12</h2>
-                        <p>Courses</p>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon">📝</div>
-                    <div>
-                        <h2>35</h2>
-                        <p>Tasks</p>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon">📊</div>
-                    <div>
-                        <h2>93%</h2>
-                        <p>Attendance</p>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon">📢</div>
-                    <div>
-                        <h2>8</h2>
-                        <p>Notices</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="dashboard-grid">
-                <div class="dashboard-card">
-                    <div class="card-heading">
-                        <h2>📢 Recent Notice</h2>
-                        <a href="notic.html">View All</a>
-                    </div>
-
-                    <div class="notice-list">
-                        <div class="notice-item">
-                            <span>📌</span>
-                            <p>Semester Examination starts 10 August 2026.</p>
-                        </div>
-
-                        <div class="notice-item">
-                            <span>📌</span>
-                            <p>Assignment submission last date is 30 July 2026.</p>
-                        </div>
-
-                        <div class="notice-item">
-                            <span>📌</span>
-                            <p>Sports Week registration is open.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dashboard-card">
-                    <div class="card-heading">
-                        <h2>🗓️ Upcoming Events</h2>
-                        <a href="events.html">View All</a>
-                    </div>
-
-                    <div id="dashboardEvents">
-                        <p class="loading">Loading events...</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="dashboard-card quick-actions">
-                <h2>⚡ Quick Actions</h2>
-
-                <div class="quick-action-grid">
-                    <a href="registration.html">📝 Register Student</a>
-                    <a href="courses.html">📚 View Courses</a>
-                    <a href="assignment.html">📝 View Assignments</a>
-                    <a href="events.html">🗓️ View Events</a>
-                    <a href="student.php">🎓 Manage Student Records</a>
-                    <a href="student_api.html">🔄 Student API Practical</a>
-                    <a href="admin_events.php">⚙️ Manage Events</a>
-                    <a href="faq.html">❓ Frequently Asked Questions</a>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <div
-        id="helpModal"
-        class="modal"
-        hidden
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="helpTitle">
-
-        <div class="modal-content">
-            <button
-                id="closeModal"
-                class="modal-close"
-                type="button"
-                aria-label="Close help window">
-                ×
-            </button>
-
-            <h2 id="helpTitle">❓ Student Portal Help</h2>
-            <p>Use the sidebar to open courses, events, student records and other portal pages.</p>
-            <p>Use the Theme button to switch between light and dark mode.</p>
-            <p>For common questions, visit the FAQ page.</p>
-            <a href="faq.html" class="modal-link">Open FAQ →</a>
-        </div>
-    </div>
-
-    <script src="js/script.js"></script>
-</body>
-</html>
->>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
