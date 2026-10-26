@@ -94,14 +94,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 );
 
                 $stmt->execute([
-                    "event_name" => $eventName,
-                    "event_date" => $eventDate,
-                    "venue" => $venue,
-                    "description" => $description,
-                    "category" => $category,
-                    "poster_path" => $posterPath
-                ]);
+    "event_name" => $eventName,
+    "event_date" => $eventDate,
+    "venue" => $venue,
+    "description" => $description,
+    "category" => $category,
+    "poster_path" => $posterPath
+]);
 
+<<<<<<< HEAD
                 $eventId = (int) $conn->lastInsertId();
 
                 auditLog(
@@ -110,6 +111,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 );
 
                 $message = "Event created successfully.";
+=======
+$eventId = (int) $conn->lastInsertId();
+auditLog(
+    "Event created",
+    "Event ID: " . $eventId . "; Name: " . $eventName
+);
+
+$message = "Event created successfully.";
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
                 $messageType = "success";
             } catch (PDOException $e) {
                 if ($posterPath !== null && is_file(__DIR__ . "/" . $posterPath)) {

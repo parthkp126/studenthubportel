@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Courses - Student Portal Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .courses-section {
+            width: 90%;
+            max-width: 950px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .courses-section h2 {
+            color: #123c69;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .course-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .course-table th {
+            background: #123c69;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .course-table td {
+            padding: 14px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .course-table tr:nth-child(even) {
+            background: #f4f7fb;
+        }
+
+        .course-table tr:hover {
+            background: #e9f1f8;
+        }
+
+        #themeBtn {
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        /* Courses page dark theme */
+        body.dark header,
+        body.dark .courses-section {
+            background: #1e293b;
+            color: #e5e7eb;
+        }
+
+        body.dark header a {
+            color: #e5e7eb;
+        }
+
+        body.dark .courses-section h2 {
+            color: #bfdbfe;
+        }
+
+        body.dark .course-table td {
+            border-color: #475569;
+            color: #e5e7eb;
+        }
+
+        body.dark .course-table tr:nth-child(even) {
+            background: #172033;
+        }
+
+        body.dark .course-table tr:hover {
+            background: #334155;
+        }
+
+        body.dark #themeBtn {
+            border-color: #475569;
+            background: #334155;
+            color: #e5e7eb;
+        }
+
+        @media (max-width: 700px) {
+            .courses-section {
+                width: 95%;
+                padding: 20px;
+                overflow-x: auto;
+            }
+
+            .course-table {
+                min-width: 600px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <h1>Student Portal Hub</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html" class="active">Courses</a>
+        <a href="assignment.html">Assignments</a>
+        <a href="attandance.html">Attendance</a>
+        <a href="faculty.html">Faculty</a>
+        <a href="notic.html">Notice</a>
+        <a href="profile.html">Profile</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="login-btn">Login</a>
+
+        <button type="button" id="themeBtn">🌙 Theme</button>
+    </nav>
+</header>
+
+<main>
+    <section class="courses-section">
+        <h2>My Courses</h2>
+
+        <table class="course-table">
+            <thead>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Course Name</th>
+                    <th>Faculty</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>CS101</td>
+                    <td>Programming for Problem Solving</td>
+                    <td>Dr. Patel</td>
+                </tr>
+
+                <tr>
+                    <td>CS102</td>
+                    <td>HTML &amp; Web Design</td>
+                    <td>Prof. Shah</td>
+                </tr>
+
+                <tr>
+                    <td>MA101</td>
+                    <td>Engineering Mathematics</td>
+                    <td>Prof. Mehta</td>
+                </tr>
+
+                <tr>
+                    <td>EC101</td>
+                    <td>Digital Electronics</td>
+                    <td>Prof. Desai</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Student Portal Hub</p>
+</footer>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>

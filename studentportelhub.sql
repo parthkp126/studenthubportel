@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+
 -- Generation Time: Oct 26, 2026 at 11:19 AM
+=======
+-- Generation Time: Oct 22, 2026 at 10:49 AM
+
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -37,6 +41,7 @@ CREATE TABLE `api_students` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
 --
 -- Dumping data for table `api_students`
 --
@@ -47,6 +52,7 @@ INSERT INTO `api_students` (`id`, `name`, `email`, `course`, `status`, `created_
 (4, 'vraj italiya', 'vrajp@example.com', 'Computer Science', 'Active', '2026-10-22 07:23:06', '2026-10-22 07:23:06'),
 (5, 'manas gamdha', 'manas@example.com', 'Information Technology', 'Active', '2026-10-22 07:25:09', '2026-10-22 07:25:09');
 
+=======
 -- --------------------------------------------------------
 
 --
@@ -61,6 +67,7 @@ CREATE TABLE `audit_logs` (
   `ip_address` varchar(45) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Dumping data for table `audit_logs`
@@ -94,6 +101,8 @@ CREATE TABLE `contact_messages` (
 INSERT INTO `contact_messages` (`id`, `name`, `email`, `message`, `created_at`) VALUES
 (1, 'Parth Kaklotar', 'parthkaklotar544@gmail.com', 'good study', '2026-10-26 07:46:45');
 
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 -- --------------------------------------------------------
 
 --
@@ -107,6 +116,7 @@ CREATE TABLE `events` (
   `venue` varchar(100) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `category` varchar(100) DEFAULT NULL,
+<<<<<<< HEAD
   `poster_path` varchar(255) DEFAULT NULL,
   `status` varchar(20) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -142,6 +152,11 @@ CREATE TABLE `portal_notices` (
 INSERT INTO `portal_notices` (`notice_id`, `title`, `message`, `expires_at`, `status`, `created_at`) VALUES
 (1, 'report', 'your student is good study working', '2026-10-30', 'Active', '2026-10-26 09:33:41');
 
+=======
+  `poster_path` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 -- --------------------------------------------------------
 
 --
@@ -154,6 +169,7 @@ CREATE TABLE `registrations` (
   `event_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+<<<<<<< HEAD
 --
 -- Dumping data for table `registrations`
 --
@@ -161,6 +177,8 @@ CREATE TABLE `registrations` (
 INSERT INTO `registrations` (`registration_id`, `student_id`, `event_id`) VALUES
 (1, 1, 3);
 
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 -- --------------------------------------------------------
 
 --
@@ -175,6 +193,7 @@ CREATE TABLE `students` (
   `status` enum('Active','Inactive') NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+<<<<<<< HEAD
 --
 -- Dumping data for table `students`
 --
@@ -185,6 +204,8 @@ INSERT INTO `students` (`student_id`, `name`, `email`, `course`, `status`) VALUE
 (3, 'vraj italiya', 'vraj@example.com', 'Computer Engineering', 'Active'),
 (4, 'manas patel', 'manas@example.com', 'Computer Science', 'Inactive');
 
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 -- --------------------------------------------------------
 
 --
@@ -205,6 +226,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+<<<<<<< HEAD
 --
 -- Dumping data for table `users`
 --
@@ -217,6 +239,8 @@ INSERT INTO `users` (`id`, `name`, `enrollment`, `email`, `mobile`, `password`, 
 (5, 'krutin', '25Cs038', 'student@example.com', '2543252353', '$2y$10$xrlDAJrrbk/43nJ7xia.P.J01Lz5LJAmKaXTtTwm3kImrZ6218MIq', 'Information Technology', 'Second Year', 'Male', 'Student', '2026-10-26 09:48:59');
 
 --
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 -- Indexes for dumped tables
 --
 
@@ -234,24 +258,30 @@ ALTER TABLE `audit_logs`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `contact_messages`
 --
 ALTER TABLE `contact_messages`
   ADD PRIMARY KEY (`id`);
 
 --
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`event_id`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `portal_notices`
 --
 ALTER TABLE `portal_notices`
   ADD PRIMARY KEY (`notice_id`);
 
 --
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 -- Indexes for table `registrations`
 --
 ALTER TABLE `registrations`
@@ -287,6 +317,7 @@ ALTER TABLE `api_students`
 -- AUTO_INCREMENT for table `audit_logs`
 --
 ALTER TABLE `audit_logs`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -294,11 +325,15 @@ ALTER TABLE `audit_logs`
 --
 ALTER TABLE `contact_messages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
+<<<<<<< HEAD
   MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
@@ -306,6 +341,9 @@ ALTER TABLE `events`
 --
 ALTER TABLE `portal_notices`
   MODIFY `notice_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+=======
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 
 --
 -- AUTO_INCREMENT for table `registrations`
@@ -323,7 +361,11 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+<<<<<<< HEAD
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+=======
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 
 --
 -- Constraints for dumped tables

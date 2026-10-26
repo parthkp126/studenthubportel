@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -176,6 +177,283 @@ body.dark #apiStudentError {
     background: #450a0a;
     color: #fecaca;
 }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <button
+            id="menuBtn"
+            class="hamburger"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false">
+            ☰
+        </button>
+
+        <div class="brand">🎓 Student Portal Hub</div>
+
+        <div class="top-actions">
+            <a href="index.html">🏠 Home</a>
+            <a href="login.php">🔐 Login</a>
+            <button id="themeBtn" type="button">🌙 Theme</button>
+            <button id="helpBtn" type="button">❓ Help</button>
+        </div>
+    </header>
+
+    <div class="portal-layout">
+        <aside id="sidebar" class="sidebar" aria-label="Main navigation">
+            <h3>Menu</h3>
+            <a href="index.html">🏠 Dashboard</a>
+            <a href="courses.html">📚 Courses</a>
+            <a href="attendance.html">📊 Attendance</a>
+            <a href="events.html">🗓️ Events</a>
+            <a href="student.php">🎓 Student Records</a>
+            <a href="student_api.html" class="active">🔄 Student API Practical</a>
+            <a href="registration.html">📝 Registration</a>
+            <a href="faq.html">❓ FAQ</a>
+        </aside>
+
+        <main class="dashboard">
+            <div class="api-page">
+                <section class="api-card">
+                    <h1>Student Records API Practical</h1>
+                    <p>Add, search, edit, and soft-delete student records using the Fetch API.</p>
+
+                    <div
+                        id="apiStudentMessage"
+                        class="api-message"
+                        role="status"
+                        aria-live="polite">
+                    </div>
+
+                    <form id="apiStudentForm">
+                        <input type="hidden" id="apiStudentId">
+
+                        <div class="api-form-grid">
+                            <div class="api-field">
+                                <label for="apiStudentName">Student name</label>
+                                <input
+                                    type="text"
+                                    id="apiStudentName"
+                                    maxlength="100"
+                                    required>
+                            </div>
+
+                            <div class="api-field">
+                                <label for="apiStudentEmail">Email</label>
+                                <input
+                                    type="email"
+                                    id="apiStudentEmail"
+                                    maxlength="150"
+                                    required>
+                            </div>
+
+                            <div class="api-field">
+                                <label for="apiStudentCourse">Course</label>
+                                <select id="apiStudentCourse" required>
+                                    <option value="">Select course</option>
+                                    <option value="Computer Science">Computer Science</option>
+                                    <option value="Information Technology">Information Technology</option>
+                                    <option value="Computer Engineering">Computer Engineering</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="api-actions">
+                            <button type="submit" id="apiStudentSave">Add Student</button>
+                            <button type="button" id="apiStudentCancel" hidden>Cancel Edit</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="api-card">
+                    <h2>Student Records</h2>
+
+                    <div class="api-filters">
+                        <div class="api-field">
+                            <label for="apiStudentSearch">Search students</label>
+                            <input
+                                type="search"
+                                id="apiStudentSearch"
+                                placeholder="Search by name or email">
+                        </div>
+
+                        <div class="api-field">
+                            <label for="apiStudentCourseFilter">Filter by course</label>
+                            <select id="apiStudentCourseFilter">
+                                <option value="">All courses</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Computer Engineering">Computer Engineering</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <p id="apiStudentLoading" hidden>Loading student records...</p>
+                    <p id="apiStudentError" role="alert" hidden></p>
+
+                    <div class="api-table-wrap">
+                        <table id="apiStudentTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Course</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="apiStudentRows">
+                                <tr>
+                                    <td colspan="5">Student records will load here.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="helpModal" class="modal" hidden>
+        <div class="modal-content">
+            <button id="closeModal" class="modal-close" type="button" aria-label="Close help">×</button>
+            <h2>Student Portal Help</h2>
+            <p>Use this page to add, find, update, or remove student records.</p>
+            <a href="faq.html" class="modal-link">Open FAQ →</a>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Records API - Student Portal Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .api-page {
+            width: min(1100px, calc(100% - 32px));
+            margin: 30px auto;
+        }
+
+        .api-card {
+            padding: 24px;
+            margin-bottom: 24px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+        }
+
+        .api-form-grid,
+        .api-filters {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .api-field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .api-field input,
+        .api-field select {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            font: inherit;
+        }
+
+        .api-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .api-actions button {
+            padding: 10px 16px;
+            border: 0;
+            border-radius: 7px;
+            background: #2459d3;
+            color: white;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .api-actions button:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        #apiStudentCancel {
+            background: #64748b;
+        }
+
+        .api-message {
+            margin: 14px 0;
+            padding: 12px;
+            border-radius: 7px;
+        }
+
+        .api-message:empty {
+            display: none;
+        }
+
+        .api-message.success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .api-message.error,
+        #apiStudentError {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .api-table-wrap {
+            margin-top: 18px;
+            overflow-x: auto;
+        }
+
+        #apiStudentTable {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #apiStudentTable th,
+        #apiStudentTable td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: left;
+        }
+
+        #apiStudentTable th {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .api-table-button {
+            margin: 2px;
+            padding: 6px 10px;
+            border: 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 650px) {
+            .api-form-grid,
+            .api-filters {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 

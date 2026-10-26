@@ -51,11 +51,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["confirm"] ?? "") === "yes"
     );
     $archiveStmt->execute(["event_id" => $eventId]);
 
+<<<<<<< HEAD
     if ($archiveStmt->rowCount() > 0) {
         auditLog(
             "Event archived",
             "Event ID: " . $eventId . "; Name: " . $event["event_name"]
         );
+=======
+    if ($deleteStmt->rowCount() > 0) {
+        auditLog(
+            "Event deleted",
+            "Event ID: " . $eventId . "; Name: " . $event["event_name"]
+        );
+    } else {
+        http_response_code(500);
+        exit("Could not delete the event.");
+    }
+
+    if (!empty($event["poster_path"])) {
+        $relativePath = str_replace("\\", "/", $event["poster_path"]);
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 
         $archived = true;
         $message = "Event archived successfully.";

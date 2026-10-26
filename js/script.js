@@ -6,17 +6,21 @@ document.addEventListener("DOMContentLoaded", function () {
     setupEvents();
     setupFAQ();
     setupApiStudents();
+<<<<<<< HEAD
 
     loadDashboardStats();
 
     if (document.getElementById("dashboardNotices")) {
         loadDashboardNotices();
     }
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 
     if (document.getElementById("eventsContainer")) {
         loadEvents();
     }
 
+<<<<<<< HEAD
     if (document.getElementById("dashboardEvents")) {
         loadDashboardEvents();
     }
@@ -24,10 +28,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById("faqContainer")) {
         loadFAQs();
     }
+=======
+    if (document.getElementById("faqContainer")) {
+        loadFAQs();
+    }
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 });
 
 function setupTheme() {
     const button = document.getElementById("themeBtn");
+<<<<<<< HEAD
     const savedTheme = localStorage.getItem("studenthub-theme");
 
     if (savedTheme === "dark") {
@@ -44,22 +54,29 @@ function setupTheme() {
 
     updateButton();
 
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
     if (!button) return;
 
     button.addEventListener("click", function () {
         document.body.classList.toggle("dark");
+<<<<<<< HEAD
 
         const isDark = document.body.classList.contains("dark");
         localStorage.setItem("studenthub-theme", isDark ? "dark" : "light");
 
         updateButton();
+=======
+        button.textContent = document.body.classList.contains("dark")
+            ? "☀️"
+            : "🌙 Theme";
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
     });
 }
 
 function setupMenu() {
     const button = document.getElementById("menuBtn");
     const sidebar = document.getElementById("sidebar");
-
     if (!button || !sidebar) return;
 
     button.addEventListener("click", function () {
@@ -78,7 +95,6 @@ function setupModal() {
     const helpButton = document.getElementById("helpBtn");
     const closeButton = document.getElementById("closeModal");
     const modal = document.getElementById("helpModal");
-
     if (!modal) return;
 
     if (helpButton) {
@@ -118,6 +134,7 @@ function setupActiveSidebar() {
     });
 }
 
+<<<<<<< HEAD
 /* Dashboard: live statistics from the database */
 async function loadDashboardStats() {
     const elements = {
@@ -257,6 +274,8 @@ async function loadDashboardEvents() {
 }
 
 /* Events page: search, filter, sort and pagination */
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 let events = [];
 let filteredEvents = [];
 let eventPage = 1;
@@ -300,6 +319,7 @@ async function loadEvents() {
     if (errorBox) errorBox.hidden = true;
 
     try {
+<<<<<<< HEAD
         const response = await fetch("events_list.php", {
             headers: { Accept: "application/json" }
         });
@@ -315,6 +335,20 @@ async function loadEvents() {
         displayEvents();
     } catch (error) {
         console.error("Events loading error:", error);
+=======
+        const response = await fetch("json/events.json");
+
+        if (!response.ok) {
+            throw new Error("Could not load events.");
+        }
+
+        const data = await response.json();
+        events = Array.isArray(data) ? data : [];
+        eventPage = 1;
+        displayEvents();
+    } catch (error) {
+        console.error(error);
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
         container.replaceChildren();
 
         if (errorBox) {
@@ -351,6 +385,7 @@ function displayEvents() {
 
         const matchesFilter =
             filterValue === "all" || category === filterValue;
+<<<<<<< HEAD
 
         return matchesSearch && matchesFilter;
     });
@@ -449,18 +484,113 @@ function createEventPagination(totalPages) {
     pagination.replaceChildren();
     if (totalPages <= 1) return;
 
+=======
+
+        return matchesSearch && matchesFilter;
+    });
+
+    if (sortValue === "title-asc") {
+        filteredEvents.sort((a, b) =>
+            String(a.title || "").localeCompare(String(b.title || ""))
+        );
+    } else if (sortValue === "title-desc") {
+        filteredEvents.sort((a, b) =>
+            String(b.title || "").localeCompare(String(a.title || ""))
+        );
+    } else if (sortValue === "date-asc") {
+        filteredEvents.sort(
+            (a, b) => new Date(a.date) - new Date(b.date)
+        );
+    } else if (sortValue === "date-desc") {
+        filteredEvents.sort(
+            (a, b) => new Date(b.date) - new Date(a.date)
+        );
+    }
+
+    const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
+
+    if (totalPages > 0 && eventPage > totalPages) {
+        eventPage = totalPages;
+    }
+
+    const start = (eventPage - 1) * eventsPerPage;
+    const pageEvents = filteredEvents.slice(start, start + eventsPerPage);
+
+    container.replaceChildren();
+
+    if (pageEvents.length === 0) {
+        const card = document.createElement("div");
+        card.className = "event-card";
+
+        const heading = document.createElement("h2");
+        heading.textContent = "No Events Found";
+
+        const paragraph = document.createElement("p");
+        paragraph.textContent = "Try another search or filter.";
+
+        card.append(heading, paragraph);
+        container.appendChild(card);
+    } else {
+        pageEvents.forEach(function (event) {
+            const card = document.createElement("div");
+            card.className = "event-card";
+
+            const heading = document.createElement("h2");
+            heading.textContent = event.title || "Event";
+
+            const date = document.createElement("p");
+            date.textContent = "📅 Date: " + (event.date || "N/A");
+
+            const category = document.createElement("p");
+            category.textContent =
+                "📂 Category: " + (event.category || "N/A");
+
+            const description = document.createElement("p");
+            description.textContent = event.description || "";
+
+            card.append(heading, date, category, description);
+            container.appendChild(card);
+        });
+    }
+
+    updateEventInfo();
+    createEventPagination(totalPages);
+}
+
+function updateEventInfo() {
+    const result = document.getElementById("eventResultInfo");
+    if (!result) return;
+
+    result.textContent =
+        filteredEvents.length + " event(s) found - Page " + eventPage;
+}
+
+function createEventPagination(totalPages) {
+    const pagination = document.getElementById("eventPagination");
+    if (!pagination) return;
+
+    pagination.replaceChildren();
+    if (totalPages <= 1) return;
+
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
     const previous = document.createElement("button");
     previous.type = "button";
     previous.textContent = "Previous";
     previous.disabled = eventPage === 1;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
     previous.addEventListener("click", function () {
         if (eventPage > 1) {
             eventPage--;
             displayEvents();
         }
     });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
     pagination.appendChild(previous);
 
     for (let page = 1; page <= totalPages; page++) {
@@ -484,18 +614,27 @@ function createEventPagination(totalPages) {
     next.type = "button";
     next.textContent = "Next";
     next.disabled = eventPage === totalPages;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
     next.addEventListener("click", function () {
         if (eventPage < totalPages) {
             eventPage++;
             displayEvents();
         }
     });
+<<<<<<< HEAD
 
     pagination.appendChild(next);
 }
 
 /* FAQ page */
+=======
+    pagination.appendChild(next);
+}
+
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 let faqs = [];
 
 function setupFAQ() {
@@ -582,7 +721,10 @@ function displayFAQs() {
     }
 }
 
+<<<<<<< HEAD
 /* Student API page */
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
 function setupApiStudents() {
     const form = document.getElementById("apiStudentForm");
     if (!form) return;
@@ -771,12 +913,18 @@ function setupApiStudents() {
             courseInput.value = student.course;
             saveButton.textContent = "Update Student";
             cancelButton.hidden = false;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
             form.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
             return;
         }
 
@@ -808,4 +956,8 @@ function setupApiStudents() {
     courseFilter.addEventListener("change", loadStudents);
 
     loadStudents();
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 2cde1d43867d7cccb15cbea43a9d7b6174545776
