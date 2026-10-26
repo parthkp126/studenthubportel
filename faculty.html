@@ -1,169 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Faculty - Student Portal Hub</title>
 
     <link rel="stylesheet" href="css/style.css">
 
-
     <style>
-
         .faculty-section {
             width: 90%;
-
             max-width: 900px;
-
             margin: 50px auto;
-
             padding: 40px;
-
             background: white;
-
             border-radius: 18px;
-
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
-
 
         .faculty-section h2 {
             color: #123c69;
-
             text-align: center;
-
             margin-bottom: 25px;
         }
 
-
         .faculty-table {
             width: 100%;
-
             border-collapse: collapse;
         }
 
-
         .faculty-table th {
             background: #123c69;
-
             color: white;
-
             padding: 15px;
-
             text-align: left;
         }
 
-
         .faculty-table td {
             padding: 14px;
-
             border-bottom: 1px solid #ddd;
         }
-
 
         .faculty-table tr:nth-child(even) {
             background: #f4f7fb;
         }
 
-
         .faculty-table tr:hover {
             background: #e9f1f8;
         }
 
-
         .faculty-table td:first-child {
             color: #123c69;
-
             font-weight: bold;
         }
-
 
         .faculty-table td:last-child {
             color: #1e6091;
         }
 
-    </style>
+        #themeBtn {
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font: inherit;
+        }
 
+        /* Faculty page dark theme */
+        body.dark header,
+        body.dark .faculty-section {
+            background: #1e293b;
+            color: #e5e7eb;
+        }
+
+        body.dark header a {
+            color: #e5e7eb;
+        }
+
+        body.dark .faculty-section h2,
+        body.dark .faculty-table td:first-child,
+        body.dark .faculty-table td:last-child {
+            color: #bfdbfe;
+        }
+
+        body.dark .faculty-table td {
+            border-color: #475569;
+            color: #e5e7eb;
+        }
+
+        body.dark .faculty-table tr:nth-child(even) {
+            background: #172033;
+        }
+
+        body.dark .faculty-table tr:hover {
+            background: #334155;
+        }
+
+        body.dark #themeBtn {
+            border-color: #475569;
+            background: #334155;
+            color: #e5e7eb;
+        }
+
+        @media (max-width: 700px) {
+            .faculty-section {
+                width: 95%;
+                padding: 20px;
+                overflow-x: auto;
+            }
+
+            .faculty-table {
+                min-width: 600px;
+            }
+        }
+    </style>
 </head>
 
-
 <body>
-
 <header>
-
     <h1>Student Portal Hub</h1>
 
     <nav>
-
         <a href="index.html">Home</a>
         <a href="courses.html">Courses</a>
         <a href="assignment.html">Assignments</a>
         <a href="attandance.html">Attendance</a>
         <a href="faculty.html" class="active">Faculty</a>
         <a href="notic.html">Notice</a>
-        <a href="profile.html">Profile</a>
+        <a href="profile.php">Profile</a>
         <a href="contact.html">Contact</a>
         <a href="login.html" class="login-btn">Login</a>
 
+        <button type="button" id="themeBtn">🌙 Theme</button>
     </nav>
-
 </header>
 
+<main>
+    <section class="faculty-section">
+        <h2>Faculty Details</h2>
 
-<section class="faculty-section">
+        <table class="faculty-table">
+            <thead>
+                <tr>
+                    <th>Faculty Name</th>
+                    <th>Subject</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
 
-    <h2>Faculty Details</h2>
+            <tbody>
+                <tr>
+                    <td>Dr. Patel</td>
+                    <td>Programming</td>
+                    <td>patel@college.edu</td>
+                </tr>
 
-    <table class="faculty-table">
+                <tr>
+                    <td>Prof. Shah</td>
+                    <td>Web Design</td>
+                    <td>shah@college.edu</td>
+                </tr>
 
-        <tr>
-            <th>Faculty Name</th>
-            <th>Subject</th>
-            <th>Email</th>
-        </tr>
+                <tr>
+                    <td>Prof. Mehta</td>
+                    <td>Mathematics</td>
+                    <td>mehta@college.edu</td>
+                </tr>
 
-        <tr>
-            <td>Dr. Patel</td>
-            <td>Programming</td>
-            <td>patel@college.edu</td>
-        </tr>
-
-        <tr>
-            <td>Prof. Shah</td>
-            <td>Web Design</td>
-            <td>shah@college.edu</td>
-        </tr>
-
-        <tr>
-            <td>Prof. Mehta</td>
-            <td>Mathematics</td>
-            <td>mehta@college.edu</td>
-        </tr>
-
-        <tr>
-            <td>Prof. Desai</td>
-            <td>Digital Electronics</td>
-            <td>desai@college.edu</td>
-        </tr>
-
-    </table>
-
-</section>
-
+                <tr>
+                    <td>Prof. Desai</td>
+                    <td>Digital Electronics</td>
+                    <td>desai@college.edu</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
 
 <footer>
-
-    <p>
-        © 2026 Student Portal Hub
-    </p>
-
+    <p>© 2026 Student Portal Hub</p>
 </footer>
 
-
+<script src="js/script.js" defer></script>
 </body>
 </html>

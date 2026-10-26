@@ -1,0 +1,22 @@
+[
+    {
+        "question": "How can I register as a student?",
+        "answer": "Fill in the Smart Registration form, correct any validation messages and submit the form."
+    },
+    {
+        "question": "How does the event search work?",
+        "answer": "The event section loads JSON data using the Fetch API and filters the records as you type."
+    },
+    {
+        "question": "Can I change the portal theme?",
+        "answer": "Yes. Use the Theme button. Your selected theme is stored using localStorage."
+    },
+    {
+        "question": "What happens if JSON data cannot be loaded?",
+        "answer": "The dashboard shows an error message instead of failing silently."
+    },
+    {
+        "question": "Which concepts are demonstrated here?",
+        "answer": "The portal demonstrates DOM manipulation, events, validation, Fetch API, JSON, search, filter, sorting, pagination, localStorage, modal and responsive design."
+    }
+]

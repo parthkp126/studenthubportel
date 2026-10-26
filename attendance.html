@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance - Student Portal Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .attendance-section {
+            width: 90%;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .attendance-section h2 {
+            color: #123c69;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .attendance-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .attendance-table th {
+            background: #123c69;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .attendance-table td {
+            padding: 14px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .attendance-table tr:nth-child(even) {
+            background: #f4f7fb;
+        }
+
+        .high {
+            color: green;
+            font-weight: bold;
+        }
+
+        .medium {
+            color: orange;
+            font-weight: bold;
+        }
+
+        #themeBtn {
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        /* Attendance page dark theme */
+        body.dark header,
+        body.dark .attendance-section {
+            background: #1e293b;
+            color: #e5e7eb;
+        }
+
+        body.dark header a {
+            color: #e5e7eb;
+        }
+
+        body.dark .attendance-section h2 {
+            color: #bfdbfe;
+        }
+
+        body.dark .attendance-table td {
+            border-color: #475569;
+            color: #e5e7eb;
+        }
+
+        body.dark .attendance-table tr:nth-child(even) {
+            background: #172033;
+        }
+
+        body.dark #themeBtn {
+            border-color: #475569;
+            background: #334155;
+            color: #e5e7eb;
+        }
+
+        @media (max-width: 700px) {
+            .attendance-section {
+                width: 95%;
+                padding: 20px;
+                overflow-x: auto;
+            }
+
+            .attendance-table {
+                min-width: 600px;
+            }
+        }
+        body.dark {
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+body.dark footer {
+    background: #1e293b;
+    color: #e5e7eb;
+}
+    </style>
+</head>
+
+<body>
+<header>
+    <h1>Student Portal Hub</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="assignment.html">Assignments</a>
+        <a href="attandance.html" class="active">Attendance</a>
+        <a href="faculty.html">Faculty</a>
+        <a href="notic.html">Notice</a>
+        <a href="profile.php">Profile</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="login-btn">Login</a>
+
+        <button type="button" id="themeBtn">🌙 Theme</button>
+    </nav>
+</header>
+
+<main>
+    <section class="attendance-section">
+        <h2>Student Attendance</h2>
+
+        <table class="attendance-table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Total Classes</th>
+                    <th>Classes Attended</th>
+                    <th>Attendance</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Programming</td>
+                    <td>30</td>
+                    <td>28</td>
+                    <td class="high">93%</td>
+                </tr>
+
+                <tr>
+                    <td>Mathematics</td>
+                    <td>30</td>
+                    <td>27</td>
+                    <td class="high">90%</td>
+                </tr>
+
+                <tr>
+                    <td>Digital Electronics</td>
+                    <td>30</td>
+                    <td>25</td>
+                    <td class="medium">83%</td>
+                </tr>
+
+                <tr>
+                    <td>Communication Skills</td>
+                    <td>30</td>
+                    <td>29</td>
+                    <td class="high">97%</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Student Portal Hub</p>
+</footer>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>

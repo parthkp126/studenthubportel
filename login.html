@@ -1,285 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Login - Student Portal Hub</title>
 
     <link rel="stylesheet" href="css/style.css">
 
-
     <style>
-
         .login-section {
             width: 100%;
-
             min-height: calc(100vh - 150px);
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             padding: 40px 20px;
         }
 
-
         .login-box {
             width: 100%;
-
             max-width: 450px;
-
             background: white;
-
             padding: 40px;
-
             border-radius: 18px;
-
-            box-shadow: 0 10px 35px rgba(0,0,0,0.12);
-
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
             border-top: 5px solid #123c69;
         }
 
-
         .login-box h2 {
             color: #123c69;
-
             text-align: center;
-
             margin-bottom: 10px;
         }
 
-
         .login-box > p {
             text-align: center;
-
             color: #777;
-
             margin-bottom: 30px;
         }
-
 
         .form-group {
             margin-bottom: 20px;
         }
 
-
         .form-group label {
             display: block;
-
             color: #123c69;
-
             font-weight: bold;
-
             margin-bottom: 8px;
         }
 
-
         .form-group input {
             width: 100%;
-
             padding: 13px;
-
             border: 1px solid #ccc;
-
             border-radius: 8px;
-
             font-size: 15px;
         }
 
-
         .login-buttons {
             display: flex;
-
             gap: 10px;
-
             margin-top: 25px;
         }
-
 
         .login-buttons button {
             flex: 1;
-
             padding: 13px;
-
             border: none;
-
             border-radius: 8px;
-
             font-weight: bold;
-
             cursor: pointer;
         }
 
-
         .login-submit {
             background: #123c69;
-
             color: white;
         }
 
-
         .clear-button {
             background: #ddd;
-
             color: #222;
         }
 
-
         .back-home {
             text-align: center;
-
             margin-top: 25px;
         }
 
-
         .back-home a {
             color: #1e6091;
-
             text-decoration: none;
-
             font-weight: bold;
         }
 
-    </style>
+        #themeBtn {
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font: inherit;
+        }
 
+        /* Login page dark theme */
+        body.dark header,
+        body.dark .login-box {
+            background: #1e293b;
+            color: #e5e7eb;
+        }
+
+        body.dark header a {
+            color: #e5e7eb;
+        }
+
+        body.dark .login-box h2,
+        body.dark .form-group label {
+            color: #bfdbfe;
+        }
+
+        body.dark .login-box > p {
+            color: #cbd5e1;
+        }
+
+        body.dark .form-group input {
+            border-color: #475569;
+            background: #0f172a;
+            color: #f8fafc;
+        }
+
+        body.dark .form-group input::placeholder {
+            color: #94a3b8;
+        }
+
+        body.dark .clear-button {
+            background: #475569;
+            color: #f8fafc;
+        }
+
+        body.dark .back-home a {
+            color: #93c5fd;
+        }
+
+        body.dark #themeBtn {
+            border-color: #475569;
+            background: #334155;
+            color: #e5e7eb;
+        }
+
+        @media (max-width: 500px) {
+            .login-box {
+                padding: 25px;
+            }
+        }
+    </style>
 </head>
 
-
 <body>
-
 <header>
-
     <h1>Student Portal Hub</h1>
 
     <nav>
-
         <a href="index.html">Home</a>
         <a href="courses.html">Courses</a>
         <a href="assignment.html">Assignments</a>
         <a href="attandance.html">Attendance</a>
         <a href="faculty.html">Faculty</a>
         <a href="notic.html">Notice</a>
-        <a href="profile.html">Profile</a>
+        <a href="profile.php">Profile</a>
         <a href="contact.html">Contact</a>
         <a href="login.html" class="login-btn active">Login</a>
 
+        <button type="button" id="themeBtn">🌙 Theme</button>
     </nav>
-
 </header>
 
-
 <main>
-
     <section class="login-section">
-
         <div class="login-box">
-
             <h2>Welcome Back</h2>
 
-            <p>
-                Login to access your Student Portal Hub
-            </p>
-
+            <p>Login to access your Student Portal Hub</p>
 
             <form>
-
                 <div class="form-group">
-
-                    <label for="student-id">
-                        Student ID
-                    </label>
-
+                    <label for="student-id">Student ID</label>
                     <input
                         type="text"
                         id="student-id"
+                        name="student_id"
                         placeholder="Enter your Student ID"
                         required
                     >
-
                 </div>
 
-
                 <div class="form-group">
-
-                    <label for="email">
-                        Email Address
-                    </label>
-
+                    <label for="email">Email Address</label>
                     <input
                         type="email"
                         id="email"
+                        name="email"
                         placeholder="Enter your email"
                         required
                     >
-
                 </div>
 
-
                 <div class="form-group">
-
-                    <label for="password">
-                        Password
-                    </label>
-
+                    <label for="password">Password</label>
                     <input
                         type="password"
                         id="password"
+                        name="password"
                         placeholder="Enter your password"
                         required
                     >
-
                 </div>
-
 
                 <div class="login-buttons">
-
-                    <button
-                        type="submit"
-                        class="login-submit">
-                        Login
-                    </button>
-
-                    <button
-                        type="reset"
-                        class="clear-button">
-                        Clear
-                    </button>
-
+                    <button type="submit" class="login-submit">Login</button>
+                    <button type="reset" class="clear-button">Clear</button>
                 </div>
-
             </form>
 
-
             <div class="back-home">
-
-                <a href="index.html">
-                    ← Back to Home
-                </a>
-
+                <a href="index.html">← Back to Home</a>
             </div>
-
         </div>
-
     </section>
-
 </main>
 
-
 <footer>
-
-    <p>
-        © 2026 Student Portal Hub
-    </p>
-
+    <p>© 2026 Student Portal Hub</p>
 </footer>
 
-
+<script src="js/script.js" defer></script>
 </body>
 </html>
