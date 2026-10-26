@@ -2716,4 +2716,49 @@ body.dark .notification-banner {
 .page-content {
     padding-top: 35px !important;
 }
+/* Navigation links as buttons; Theme button on the right */
+header nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+}
 
+header nav a {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 12px;
+    border: 1px solid #dbe3ee;
+    border-radius: 8px;
+    color: #334155;
+    text-decoration: none;
+}
+
+header nav a:hover,
+header nav a.active {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+header nav #themeBtn {
+    margin-left: auto;
+    flex-shrink: 0;
+    padding: 9px 14px;
+    border: 1px solid #dbe3ee;
+    border-radius: 8px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    header nav {
+        gap: 6px;
+    }
+
+    header nav a,
+    header nav #themeBtn {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+}
